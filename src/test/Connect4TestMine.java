@@ -1,4 +1,4 @@
-package connect4;
+package test;
 
 /**
  * Created with IntelliJ IDEA.
@@ -8,6 +8,7 @@ package connect4;
  * To change this template use File | Settings | File Templates.
  */
 
+import connect4.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +17,7 @@ import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
 
-public class Connect4Test {
+public class Connect4TestMine {
     IPlayer p1, p2;
     Board board;
     Connect4 c4;

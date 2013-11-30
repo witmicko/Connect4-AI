@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3361a20d-8ea1-49c0-a50a-776590cc1813" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MOVED" beforePath="C:\intelijWorspace\connect4\src\connect4\Connect4Test.java" afterPath="$PROJECT_DIR$/src/test/Connect4TestMine.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="connect4.iws" />
@@ -11,14 +11,14 @@
     <file path="/Point.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385216505845" ignored="false" />
     <file path="$PROJECT_DIR$/../Assignment2/src/LineDetector.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385657157466" ignored="false" />
     <file path="/LineDetector.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385548338486" ignored="false" />
-    <file path="/Dummy.txt" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385821868888" ignored="false" />
+    <file path="/Dummy.txt" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385822228919" ignored="false" />
     <file path="$PROJECT_DIR$/../Assignment2/src/MakeImage.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1384870998566" ignored="false" />
     <file path="$PROJECT_DIR$/../Assignment2/text_files/inarow.txt" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1384871048772" ignored="false" />
     <file path="/GameRunner.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385221455913" ignored="false" />
     <file path="/ComputerPlayer20194857.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385136245481" ignored="false" />
-    <file path="/fragment.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385586612142" ignored="false" />
+    <file path="/fragment.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385822921419" ignored="false" />
     <file path="$PROJECT_DIR$/../Assignment2/src/LineDetectorTest.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385146886981" ignored="false" />
-    <file path="/Connect4Test.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385821689246" ignored="false" />
+    <file path="/Connect4Test.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385822942321" ignored="false" />
     <file path="/Board.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385215739879" ignored="false" />
     <file path="/Connect4.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385819903069" ignored="false" />
     <file path="$PROJECT_DIR$/../Assignment2/src/LineDetectorUtils.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385656935142" ignored="false" />
@@ -91,19 +91,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Connect4.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Connect4.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/connect4/Connect4.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="167" column="9" selection-start="5808" selection-end="5808" vertical-scroll-proportion="0.8490566">
+            <state line="157" column="51" selection-start="5424" selection-end="5424" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Connect4Test.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/connect4/Connect4Test.java">
+      <file leaf-file-name="Connect4TestMine.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/Connect4TestMine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="101" column="20" selection-start="3730" selection-end="3730" vertical-scroll-proportion="0.0">
+            <state line="24" column="0" selection-start="515" selection-end="515" vertical-scroll-proportion="0.7484277">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -139,8 +139,9 @@
         <option value="$PROJECT_DIR$/src/connect4/ComputerPlayer_1_random.java" />
         <option value="$PROJECT_DIR$/src/connect4/GameRunner.java" />
         <option value="$PROJECT_DIR$/src/connect4/Location.java" />
-        <option value="$PROJECT_DIR$/src/connect4/Connect4Test.java" />
         <option value="$PROJECT_DIR$/src/connect4/Connect4.java" />
+        <option value="$PROJECT_DIR$/src/connect4/Connect4Test.java" />
+        <option value="$PROJECT_DIR$/src/test/Connect4TestMine.java" />
       </list>
     </option>
   </component>
@@ -208,6 +209,10 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -264,8 +269,11 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="connect4" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="test" />
+    </key>
   </component>
-  <component name="RunManager" selected="JUnit.Connect4Test">
+  <component name="RunManager" selected="JUnit.test in connect4">
     <configuration default="false" name="GameRunner" type="Application" factoryName="Application" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -325,6 +333,34 @@
       </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="test in connect4" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="connect4" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -419,17 +455,18 @@
       <patterns />
       <method />
     </configuration>
-    <list size="2">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Application.GameRunner" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.Connect4Test" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.test in connect4" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.Connect4Test" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.test in connect4" />
         <item index="1" class="java.lang.String" itemvalue="JUnit.Connect4Test" />
         <item index="2" class="java.lang.String" itemvalue="JUnit.Connect4Test" />
-        <item index="3" class="java.lang.String" itemvalue="Application.GameRunner" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.Connect4Test" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.Connect4Test" />
+        <item index="4" class="java.lang.String" itemvalue="Application.GameRunner" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -456,7 +493,11 @@
       <created>1385821873876</created>
       <updated>1385821873876</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="gitignore&#10;">
+      <created>1385822231590</created>
+      <updated>1385822231590</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -532,7 +573,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="water monsters been fucking with us." />
+    <option name="LAST_COMMIT_MESSAGE" value="gitignore&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -550,6 +591,7 @@
     <MESSAGE value="leeeroooy jenkins" />
     <MESSAGE value="added more test cases. win check seems to be working.&#10;" />
     <MESSAGE value="water monsters been fucking with us." />
+    <MESSAGE value="gitignore&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -672,19 +714,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/connect4/Connect4Test.java">
+    <entry file="file://$PROJECT_DIR$/src/connect4/Connect4.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="101" column="20" selection-start="3730" selection-end="3730" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="157" column="51" selection-start="5424" selection-end="5424" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/connect4/Connect4.java">
+    <entry file="file://$PROJECT_DIR$/src/test/Connect4TestMine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="167" column="9" selection-start="5808" selection-end="5808" vertical-scroll-proportion="0.8490566">
-          <folding />
+        <state line="24" column="0" selection-start="515" selection-end="515" vertical-scroll-proportion="0.7484277">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
