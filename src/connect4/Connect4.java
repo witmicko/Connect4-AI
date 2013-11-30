@@ -55,9 +55,7 @@ public class Connect4 {
             for (int j = 0; j < board.getNoCols() - 1; j++) {
                 int x = j;
                 int y = i;
-                int xOffset = x + 1;
-                int yOffset = y + 0;
-                count += compareStates(x, y, xOffset, yOffset);
+                count += compareStates(x, y, x+1, y);
             }
             if (count >= 3) return true;
             else count = 0;
@@ -72,14 +70,11 @@ public class Connect4 {
             for (int j = 0; j < board.getNoRows() - 1; j++) {
                 int x = i;
                 int y = j;
-                int xOffset = x + 0;
-                int yOffset = y + 1;
-                count += compareStates(x, y, xOffset, yOffset);
+                count += compareStates(x, y, x, y+1);
             }
             if (count >= 3) return true;
             else count = 0;
         }
-
         return false;
     }
 
@@ -89,23 +84,16 @@ public class Connect4 {
             for (int j = 0; j < (board.getNoRows() - 1 - i); j++) {
                 int x = j;
                 int y = j + i;
-                int xOffset = x + 1;
-                int yOffset = y + 1;
-                count += compareStates(x, y, xOffset, yOffset);
+                count += compareStates(x, y, x+1, y+1);
             }
             if (count >= 3) return true;
             else count = 0;
         }
-
-
-        count = 0;
         for (int i = 1; i < board.getNoCols() - 2; i++) {
             for (int j = 0; j < board.getNoRows() - i; j++) {
                 int x = j + i;
                 int y = j;
-                int xOffset = x + 1;
-                int yOffset = y + 1;
-                count += compareStates(x, y, xOffset, yOffset);
+                count += compareStates(x, y, x+1, y+1);
             }
             if (count >= 3) return true;
             else count = 0;
@@ -119,23 +107,16 @@ public class Connect4 {
             for (int j = 0; j < board.getNoRows() - 1 - i; j++) {
                 int x = j;
                 int y = board.getNoRows() - 1 - i - j;
-                int xOffset = x + 1;
-                int yOffset = y - 1;
-                count += compareStates(x, y, xOffset, yOffset);
+                count += compareStates(x, y, x+1, y-1);
             }
             if (count >= 3) return true;
             else count = 0;
         }
-
-
-        count = 0;
         for (int i = 1; i < board.getNoCols() - 3; i++) {
             for (int j = 0; j < board.getNoRows() - i; j++) {
                 int x = j + i;
                 int y = board.getNoRows() - j - 1;
-                int xOffset = x + 1;
-                int yOffset = y - 1;
-                count += compareStates(x, y, xOffset, yOffset);
+                count += compareStates(x, y, x+1, y-1);
             }
             if (count >= 3) return true;
             else count = 0;
