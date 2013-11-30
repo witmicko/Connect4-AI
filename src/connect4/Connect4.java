@@ -1,7 +1,7 @@
 package connect4;
 
 /**
- * Class to manage the connect 5 game
+ * Class to manage the connect 4 game
  */
 public class Connect4 {
 

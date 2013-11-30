@@ -4,9 +4,9 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3361a20d-8ea1-49c0-a50a-776590cc1813" name="Default" comment="">
+    <list default="true" id="3361a20d-8ea1-49c0-a50a-776590cc1813" name="Default" comment="refactored">
+      <change type="DELETED" beforePath="C:\intelijWorspace\connect4\.gitignore" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/connect4/Connect4.java" afterPath="$PROJECT_DIR$/src/connect4/Connect4.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/Connect4TestMine.java" afterPath="$PROJECT_DIR$/src/test/Connect4TestMine.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="connect4.iws" />
@@ -15,7 +15,7 @@
     <file path="/Point.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385216505845" ignored="false" />
     <file path="$PROJECT_DIR$/../Assignment2/src/LineDetector.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385657157466" ignored="false" />
     <file path="/LineDetector.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385548338486" ignored="false" />
-    <file path="/Dummy.txt" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385828247077" ignored="false" />
+    <file path="/Dummy.txt" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385832881948" ignored="false" />
     <file path="$PROJECT_DIR$/../Assignment2/src/MakeImage.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1384870998566" ignored="false" />
     <file path="$PROJECT_DIR$/../Assignment2/text_files/inarow.txt" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1384871048772" ignored="false" />
     <file path="/GameRunner.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385221455913" ignored="false" />
@@ -24,7 +24,7 @@
     <file path="$PROJECT_DIR$/../Assignment2/src/LineDetectorTest.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385146886981" ignored="false" />
     <file path="/Connect4Test.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385822942321" ignored="false" />
     <file path="/Board.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385215739879" ignored="false" />
-    <file path="/Connect4.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385829659632" ignored="false" />
+    <file path="/Connect4.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385832895117" ignored="false" />
     <file path="$PROJECT_DIR$/../Assignment2/src/LineDetectorUtils.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385656935142" ignored="false" />
     <file path="/Connect4TestMine.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385829409935" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -99,22 +99,8 @@
       <file leaf-file-name="Connect4.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/connect4/Connect4.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="21" selection-start="1804" selection-end="1804" vertical-scroll-proportion="0.5368421">
+            <state line="3" column="32" selection-start="55" selection-end="55" vertical-scroll-proportion="0.13385826">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Connect4TestMine.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/Connect4TestMine.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="189" column="48" selection-start="7766" selection-end="7766" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#testIsVerticalWin#0;class#Connect4TestMine#0" expanded="false" />
-                <element signature="method#testHorizontalWin#0;class#Connect4TestMine#0" expanded="false" />
-                <element signature="method#testUpDownWin#0;class#Connect4TestMine#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -241,8 +227,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -260,12 +246,12 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
-    <property name="MemberChooser.showClasses" value="true" />
     <property name="FullScreen" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
@@ -310,40 +296,6 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="Connect4Test" type="JUnit" factoryName="JUnit" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="connect4.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="connect4" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="connect4" />
-      <option name="MAIN_CLASS_NAME" value="connect4.Connect4Test" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
     <configuration default="false" name="test in connect4" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -378,6 +330,34 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
+    <configuration default="false" name="Connect4Test" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="connect4" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.Connect4Test" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
@@ -390,19 +370,6 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -431,6 +398,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -471,8 +451,8 @@
     </configuration>
     <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Application.GameRunner" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.Connect4Test" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.test in connect4" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.test in connect4" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.Connect4Test" />
     </list>
     <recent_temporary>
       <list size="5">
@@ -480,7 +460,7 @@
         <item index="1" class="java.lang.String" itemvalue="JUnit.Connect4Test" />
         <item index="2" class="java.lang.String" itemvalue="JUnit.Connect4Test" />
         <item index="3" class="java.lang.String" itemvalue="JUnit.Connect4Test" />
-        <item index="4" class="java.lang.String" itemvalue="Application.GameRunner" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.Connect4Test" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -525,7 +505,6 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2147651" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -534,19 +513,20 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.7902685" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48657718" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1719697" sideWeight="0.6812081" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1719697" sideWeight="0.6812081" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17575757" sideWeight="0.6812081" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1409396" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31879196" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17575757" sideWeight="0.6828859" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31711408" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1409396" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -632,8 +612,8 @@
           <OriginalElement>connect4</OriginalElement>
           <nodes>
             <node x="" y="">connect4.LocationState</node>
-            <node x="" y="">connect4.Board</node>
             <node x="" y="">connect4.ComputerPlayer20194857</node>
+            <node x="" y="">connect4.Board</node>
             <node x="" y="">connect4.Connect4</node>
             <node x="" y="">connect4.IPlayer</node>
             <node x="" y="">connect4.Location</node>
@@ -704,13 +684,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/Connect4Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="83" selection-start="693" selection-end="817" vertical-scroll-proportion="0.6377246">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/connect4/GameRunner.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="22" selection-start="554" selection-end="554" vertical-scroll-proportion="0.0">
@@ -727,19 +700,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/Connect4TestMine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="189" column="48" selection-start="7766" selection-end="7766" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#testIsVerticalWin#0;class#Connect4TestMine#0" expanded="false" />
-            <element signature="method#testHorizontalWin#0;class#Connect4TestMine#0" expanded="false" />
-            <element signature="method#testUpDownWin#0;class#Connect4TestMine#0" expanded="false" />
-          </folding>
+        <state line="17" column="29" selection-start="391" selection-end="391" vertical-scroll-proportion="0.24409449">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/Connect4Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="83" selection-start="693" selection-end="817" vertical-scroll-proportion="1.3832021">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/connect4/Connect4.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="21" selection-start="1804" selection-end="1804" vertical-scroll-proportion="0.5368421">
+        <state line="3" column="32" selection-start="55" selection-end="55" vertical-scroll-proportion="0.13385826">
           <folding />
         </state>
       </provider>
