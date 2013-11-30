@@ -11,20 +11,20 @@ package connect4;
 public class GameRunner {
     public static void main(String[] args) {
         IPlayer player1 = new ComputerPlayer_1_random(LocationState.RED);
-        IPlayer player2 = new ComputerPlayer_2_random(LocationState.YELLOW);
+        IPlayer player2 = new HumanPlayer(LocationState.YELLOW);
         Board board = new Board(7, 6);
         Connect4 connect4 = new Connect4(player1, player2, board);
 
 
         boolean win = false;
-        for (int i = 5; i > 0; i--) {
-            connect4.takeTurn();
+        while (!win) {
             connect4.nextPlayer();
+            while(!connect4.takeTurn())connect4.takeTurn() ;
             System.out.println(connect4.getBoard().toString());
-            win = connect4.isWin(connect4.getBoard());
-            System.out.println(win);
-            System.out.println("^^^^^^^^^");
-            if(win)System.exit(2);
+            win = connect4.isWin(board);
         }
+        System.out.println("win!!!");
+        System.out.println(connect4.getBoard().toString());
+
     }
 }

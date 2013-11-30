@@ -74,13 +74,30 @@ public class Connect4TestMine {
         assertTrue(win);
         board.clear();
 
-//        this should fail
         board.setLocationState(new Location(1, 0), LocationState.RED);
         board.setLocationState(new Location(2, 0), LocationState.RED);
-        board.setLocationState(new Location(3, 0), LocationState.YELLOW);
-        board.setLocationState(new Location(4, 0), LocationState.RED);
+        board.setLocationState(new Location(3, 0), LocationState.RED);
         win = c4.isWin(board);
         assertFalse(win);
+        board.clear();
+
+
+
+//        this should fail
+        board.setLocationState(new Location(1, 5), LocationState.RED);
+        board.setLocationState(new Location(2, 5), LocationState.RED);
+        board.setLocationState(new Location(3, 5), LocationState.YELLOW);
+        board.setLocationState(new Location(4, 5), LocationState.RED);
+        win = c4.isWin(board);
+        assertFalse(win);
+        board.clear();
+
+        board.setLocationState(new Location(1, 5), LocationState.RED);
+        board.setLocationState(new Location(2, 5), LocationState.RED);
+        board.setLocationState(new Location(3, 5), LocationState.RED);
+        board.setLocationState(new Location(4, 5), LocationState.RED);
+        win = c4.isWin(board);
+        assertTrue(win);
         board.clear();
 
         board.setLocationState(new Location(board.getNoCols() - 1, board.getNoRows() - 1), LocationState.RED);

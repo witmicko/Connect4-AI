@@ -39,7 +39,7 @@ public class Connect4 {
      * @return boolean to detect winner
      */
     public boolean isWin(Board board) {
-        if(this.numTurns < 7)return false;
+//        if(this.numTurns < 7)return false;
         return downUp(board) || upDown(board) || horizontalMatch(board) || verticalMatch(board);
     }
 
@@ -50,7 +50,7 @@ public class Connect4 {
             for (int j = 0; j < board.getNoCols() - 1; j++) {
                 int x = j;
                 int y = i;
-                count += compareStates(x, y, x+1, y);
+                count += compareStates(x, y, x+1, y,board);
             }
             if (count >= 3) return true;
             else count = 0;
@@ -65,7 +65,7 @@ public class Connect4 {
             for (int j = 0; j < board.getNoRows() - 1; j++) {
                 int x = i;
                 int y = j;
-                count += compareStates(x, y, x, y+1);
+                count += compareStates(x, y, x, y+1,board);
             }
             if (count >= 3) return true;
             else count = 0;
@@ -79,7 +79,7 @@ public class Connect4 {
             for (int j = 0; j < (board.getNoRows() - 1 - i); j++) {
                 int x = j;
                 int y = j + i;
-                count += compareStates(x, y, x+1, y+1);
+                count += compareStates(x, y, x+1, y+1,board);
             }
             if (count >= 3) return true;
             else count = 0;
@@ -88,7 +88,7 @@ public class Connect4 {
             for (int j = 0; j < board.getNoRows() - i; j++) {
                 int x = j + i;
                 int y = j;
-                count += compareStates(x, y, x+1, y+1);
+                count += compareStates(x, y, x+1, y+1,board);
             }
             if (count >= 3) return true;
             else count = 0;
@@ -102,7 +102,7 @@ public class Connect4 {
             for (int j = 0; j < board.getNoRows() - 1 - i; j++) {
                 int x = j;
                 int y = board.getNoRows() - 1 - i - j;
-                count += compareStates(x, y, x+1, y-1);
+                count += compareStates(x, y, x+1, y-1,board);
             }
             if (count >= 3) return true;
             else count = 0;
@@ -111,7 +111,7 @@ public class Connect4 {
             for (int j = 0; j < board.getNoRows() - i; j++) {
                 int x = j + i;
                 int y = board.getNoRows() - j - 1;
-                count += compareStates(x, y, x+1, y-1);
+                count += compareStates(x, y, x+1, y-1,board);
             }
             if (count >= 3) return true;
             else count = 0;
@@ -119,7 +119,7 @@ public class Connect4 {
         return false;
     }
 
-    private int compareStates(int x, int y, int xNext, int yNext) {
+    private int compareStates(int x, int y, int xNext, int yNext, Board board) {
         LocationState state = board.getLocationState(new Location(x, y));
         if (state != LocationState.EMPTY) {
             LocationState nextState = board.getLocationState(new Location(xNext, yNext));
@@ -151,8 +151,7 @@ public class Connect4 {
 //        for (int i = 0; i < board.getNoRows(); i++) {
         for (int i = board.getNoRows() - 1; i >= 0; i--) {
             if (board.getLocationState(new Location(col, i)) == LocationState.EMPTY) {
-                board.setLocationState(new Location(col, i),
-                        currentPlayer.getPlayerState());
+                board.setLocationState(new Location(col, i),currentPlayer.getPlayerState());
                 numTurns++;
                 return true;
             }
