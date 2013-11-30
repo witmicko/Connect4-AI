@@ -1,5 +1,6 @@
 package connect4;
 
+
 /**
  * 
  * Example Computer Player.
@@ -21,4 +22,24 @@ public class ComputerPlayer_2_random extends IPlayer {
 		//TODO
 		return x;
 	}
+
+    private int getCol(String prompt){
+
+
+    return -1;
+    }
+
+
+    private boolean isValidMove(int col, Board board){
+        if (col < 0 || col >= board.getNoCols())return false;
+        for(int i =0; i<board.getNoCols();i++){
+            if(board.getLocationState(new Location(i,0))==LocationState.EMPTY)return true;
+        }
+        return false;
+    }
+
+
+
+
+
 }
