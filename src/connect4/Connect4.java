@@ -39,13 +39,8 @@ public class Connect4 {
      * @return boolean to detect winner
      */
     public boolean isWin(Board board) {
-        boolean downUp, upDown, hor, vert;
-        downUp = upDown = hor = vert = false;
-        upDown = upDown(board);
-        hor = horizontalMatch(board);
-        vert = verticalMatch(board);
-        downUp = downUp(board);
-        return downUp || upDown || hor || vert;
+        if(this.numTurns < 7)return false;
+        return downUp(board) || upDown(board) || horizontalMatch(board) || verticalMatch(board);
     }
 
 
@@ -80,7 +75,7 @@ public class Connect4 {
 
     private boolean upDown(Board board) {
         int count = 0;
-        for (int i = 0; i < board.getNoRows() - 2; i++) {
+        for (int i = 0; i < board.getNoRows() - 3; i++) {
             for (int j = 0; j < (board.getNoRows() - 1 - i); j++) {
                 int x = j;
                 int y = j + i;
@@ -89,7 +84,7 @@ public class Connect4 {
             if (count >= 3) return true;
             else count = 0;
         }
-        for (int i = 1; i < board.getNoCols() - 2; i++) {
+        for (int i = 1; i < board.getNoCols() - 3; i++) {
             for (int j = 0; j < board.getNoRows() - i; j++) {
                 int x = j + i;
                 int y = j;
@@ -98,7 +93,7 @@ public class Connect4 {
             if (count >= 3) return true;
             else count = 0;
         }
-        return false;  //To change body of created methods use File | Settings | File Templates.
+        return false;
     }
 
     private boolean downUp(Board board) {
@@ -124,10 +119,10 @@ public class Connect4 {
         return false;
     }
 
-    private int compareStates(int x, int y, int xOffset, int yOffset) {
+    private int compareStates(int x, int y, int xNext, int yNext) {
         LocationState state = board.getLocationState(new Location(x, y));
         if (state != LocationState.EMPTY) {
-            LocationState nextState = board.getLocationState(new Location(xOffset, yOffset));
+            LocationState nextState = board.getLocationState(new Location(xNext, yNext));
             if (state == nextState) return +1;
         }
         return 0;
@@ -167,6 +162,9 @@ public class Connect4 {
 
     public Board getBoard() {
         return board;
+    }
+    public void setNumTurns(int numTurns){
+        this.numTurns = numTurns;
     }
 
     /**

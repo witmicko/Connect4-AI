@@ -29,6 +29,7 @@ public class Connect4TestMine {
         p2 = new ComputerPlayer_1_random(LocationState.RED);
         board = new Board(7, 6);
         c4 = new Connect4(p1, p2, board);
+        c4.setNumTurns(9);
     }
 
     @After
@@ -186,7 +187,7 @@ public class Connect4TestMine {
     }
 
     @Test
-    public void testDownUpWin() {
+    public void testDownUpWin() throws Exception{
         board.setLocationState(new Location(0, 5), LocationState.RED);
         board.setLocationState(new Location(1, 4), LocationState.RED);
         board.setLocationState(new Location(2, 3), LocationState.RED);
