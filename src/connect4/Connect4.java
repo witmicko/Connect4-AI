@@ -55,18 +55,14 @@ public class Connect4 {
             for (int j = 0; j < board.getNoCols() - 1; j++) {
                 int x = j;
                 int y = i;
-                LocationState state = board.getLocationState(new Location(x, y));
-                if (state != LocationState.EMPTY) {
-                    int xNxt = x + 1;
-                    int yNxt = y + 0;
-                    LocationState nextState = board.getLocationState(new Location(xNxt, yNxt));
-                    if (state == nextState) {
-                        count++;
-                        if (count >= 3) return true;
-                    } else count = 0;
-                }
+                int xOffset = x + 1;
+                int yOffset = y + 0;
+                count += compareStates(x, y, xOffset, yOffset);
             }
+            if (count >= 3) return true;
+            else count = 0;
         }
+
         return false;
     }
 
@@ -76,18 +72,14 @@ public class Connect4 {
             for (int j = 0; j < board.getNoRows() - 1; j++) {
                 int x = i;
                 int y = j;
-                LocationState state = board.getLocationState(new Location(x, y));
-                if (state != LocationState.EMPTY) {
-                    int xNxt = x + 0;
-                    int yNxt = y + 1;
-                    LocationState nextState = board.getLocationState(new Location(xNxt, yNxt));
-                    if (state == nextState) {
-                        count++;
-                        if (count >= 3) return true;
-                    } else count = 0;
-                }
+                int xOffset = x + 0;
+                int yOffset = y + 1;
+                count += compareStates(x, y, xOffset, yOffset);
             }
+            if (count >= 3) return true;
+            else count = 0;
         }
+
         return false;
     }
 
@@ -97,35 +89,26 @@ public class Connect4 {
             for (int j = 0; j < (board.getNoRows() - 1 - i); j++) {
                 int x = j;
                 int y = j + i;
-                LocationState state = board.getLocationState(new Location(x, y));
-                if (state != LocationState.EMPTY) {
-                    int xNxt = x + 1;
-                    int yNxt = y + 1;
-                    LocationState nextState = board.getLocationState(new Location(xNxt, yNxt));
-                    if (state == nextState) {
-                        count++;
-                        if (count >= 3) return true;
-                    } else count = 0;
-                }
+                int xOffset = x + 1;
+                int yOffset = y + 1;
+                count += compareStates(x, y, xOffset, yOffset);
             }
+            if (count >= 3) return true;
+            else count = 0;
         }
+
 
         count = 0;
         for (int i = 1; i < board.getNoCols() - 2; i++) {
             for (int j = 0; j < board.getNoRows() - i; j++) {
                 int x = j + i;
                 int y = j;
-                LocationState state = board.getLocationState(new Location(x, y));
-                if (state != LocationState.EMPTY) {
-                    int xNxt = x + 1;
-                    int yNxt = y + 1;
-                    LocationState nextState = board.getLocationState(new Location(xNxt, yNxt));
-                    if (state == nextState) {
-                        count++;
-                        if (count >= 3) return true;
-                    } else count = 0;
-                }
+                int xOffset = x + 1;
+                int yOffset = y + 1;
+                count += compareStates(x, y, xOffset, yOffset);
             }
+            if (count >= 3) return true;
+            else count = 0;
         }
         return false;  //To change body of created methods use File | Settings | File Templates.
     }
@@ -136,37 +119,37 @@ public class Connect4 {
             for (int j = 0; j < board.getNoRows() - 1 - i; j++) {
                 int x = j;
                 int y = board.getNoRows() - 1 - i - j;
-                LocationState state = board.getLocationState(new Location(x, y));
-                if (state != LocationState.EMPTY) {
-                    int xNxt = x + 1;
-                    int yNxt = y - 1;
-                    LocationState nextState = board.getLocationState(new Location(xNxt, yNxt));
-                    if (state == nextState) {
-                        count++;
-                        if (count >= 3) return true;
-                    } else count = 0;
-                }
+                int xOffset = x + 1;
+                int yOffset = y - 1;
+                count += compareStates(x, y, xOffset, yOffset);
             }
+            if (count >= 3) return true;
+            else count = 0;
         }
+
 
         count = 0;
         for (int i = 1; i < board.getNoCols() - 3; i++) {
-            for (int j = 0; j < board.getNoRows() - i + 1; j++) {
+            for (int j = 0; j < board.getNoRows() - i; j++) {
                 int x = j + i;
                 int y = board.getNoRows() - j - 1;
-                LocationState state = board.getLocationState(new Location(x, y));
-                if (state != LocationState.EMPTY) {
-                    int xNxt = x + 1;
-                    int yNxt = y - 1;
-                    LocationState nextState = board.getLocationState(new Location(xNxt, yNxt));
-                    if (state == nextState) {
-                        count++;
-                        if (count >= 3) return true;
-                    } else count = 0;
-                }
+                int xOffset = x + 1;
+                int yOffset = y - 1;
+                count += compareStates(x, y, xOffset, yOffset);
             }
+            if (count >= 3) return true;
+            else count = 0;
         }
         return false;
+    }
+
+    private int compareStates(int x, int y, int xOffset, int yOffset) {
+        LocationState state = board.getLocationState(new Location(x, y));
+        if (state != LocationState.EMPTY) {
+            LocationState nextState = board.getLocationState(new Location(xOffset, yOffset));
+            if (state == nextState) return +1;
+        }
+        return 0;
     }
 
 

@@ -47,6 +47,13 @@ public class Connect4TestMine {
         assertTrue(win);
         board.clear();
 
+        board.setLocationState(new Location(0, 1), LocationState.RED);
+        board.setLocationState(new Location(0, 2), LocationState.RED);
+        board.setLocationState(new Location(0, 3), LocationState.RED);
+        win = c4.isWin(board);
+        assertFalse(win);
+        board.clear();
+
         board.setLocationState(new Location(4, 1), LocationState.RED);
         board.setLocationState(new Location(4, 2), LocationState.RED);
         board.setLocationState(new Location(4, 3), LocationState.YELLOW);
@@ -226,6 +233,16 @@ public class Connect4TestMine {
         board.setLocationState(new Location(4, 4), LocationState.RED);
         board.setLocationState(new Location(5, 3), LocationState.RED);
         board.setLocationState(new Location(6, 2), LocationState.RED);
+        win = c4.isWin(board);
+        assertTrue(win);
+        board.clear();
+
+        board.setLocationState(new Location(5, 5), LocationState.RED);
+        board.setLocationState(new Location(4, 4), LocationState.RED);
+        board.setLocationState(new Location(3, 3), LocationState.RED);
+        board.setLocationState(new Location(2, 2), LocationState.RED);
+        board.setLocationState(new Location(1, 1), LocationState.RED);
+        board.setLocationState(new Location(0, 0), LocationState.RED);
         win = c4.isWin(board);
         assertTrue(win);
         board.clear();
