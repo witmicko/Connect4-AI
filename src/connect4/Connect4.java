@@ -39,7 +39,13 @@ public class Connect4 {
      * @return boolean to detect winner
      */
     public boolean isWin(Board board) {
-        return downUp(board) || upDown(board) || horizontalMatch(board) || verticalMatch(board);
+        boolean downUp, upDown, hor, vert;
+        downUp = upDown = hor = vert = false;
+        upDown = upDown(board);
+        hor = horizontalMatch(board);
+        vert = verticalMatch(board);
+        downUp = downUp(board);
+        return downUp || upDown || hor || vert;
     }
 
 
@@ -51,9 +57,9 @@ public class Connect4 {
                 int y = i;
                 LocationState state = board.getLocationState(new Location(x, y));
                 if (state != LocationState.EMPTY) {
-                    x = j + 1;
-                    y = i;
-                    LocationState nextState = board.getLocationState(new Location(x, y));
+                    int xNxt = x + 1;
+                    int yNxt = y + 0;
+                    LocationState nextState = board.getLocationState(new Location(xNxt, yNxt));
                     if (state == nextState) {
                         count++;
                         if (count >= 3) return true;
@@ -68,9 +74,13 @@ public class Connect4 {
         int count = 0;
         for (int i = 0; i < board.getNoCols(); i++) {
             for (int j = 0; j < board.getNoRows() - 1; j++) {
-                LocationState state = board.getLocationState(new Location(i, j));
+                int x = i;
+                int y = j;
+                LocationState state = board.getLocationState(new Location(x, y));
                 if (state != LocationState.EMPTY) {
-                    LocationState nextState = board.getLocationState(new Location(i, j + 1));
+                    int xNxt = x + 0;
+                    int yNxt = y + 1;
+                    LocationState nextState = board.getLocationState(new Location(xNxt, yNxt));
                     if (state == nextState) {
                         count++;
                         if (count >= 3) return true;
@@ -84,14 +94,14 @@ public class Connect4 {
     private boolean upDown(Board board) {
         int count = 0;
         for (int i = 0; i < board.getNoRows() - 2; i++) {
-            for (int j = 0; j < (board.getNoRows() - i); j++) {
+            for (int j = 0; j < (board.getNoRows() - 1 - i); j++) {
                 int x = j;
                 int y = j + i;
                 LocationState state = board.getLocationState(new Location(x, y));
                 if (state != LocationState.EMPTY) {
-                    x = j + 1;
-                    y = j + i + 1;
-                    LocationState nextState = board.getLocationState(new Location(x, y));
+                    int xNxt = x + 1;
+                    int yNxt = y + 1;
+                    LocationState nextState = board.getLocationState(new Location(xNxt, yNxt));
                     if (state == nextState) {
                         count++;
                         if (count >= 3) return true;
@@ -107,9 +117,9 @@ public class Connect4 {
                 int y = j;
                 LocationState state = board.getLocationState(new Location(x, y));
                 if (state != LocationState.EMPTY) {
-                    x = j + i + 1;
-                    y = j + 1;
-                    LocationState nextState = board.getLocationState(new Location(x, y));
+                    int xNxt = x + 1;
+                    int yNxt = y + 1;
+                    LocationState nextState = board.getLocationState(new Location(xNxt, yNxt));
                     if (state == nextState) {
                         count++;
                         if (count >= 3) return true;
@@ -122,31 +132,35 @@ public class Connect4 {
 
     private boolean downUp(Board board) {
         int count = 0;
-//        for (int i = board.getNoRows() - 1; i > 2; i--) {
-//            for (int j = 0; j < board.getNoRows() - 3; j++) {
-//                int x = j;
-//                int y = i - j;
-//                LocationState state = board.getLocationState(new Location(x, y));
-//                if (state != LocationState.EMPTY) {
-//                    x = j + 1;
-//                    y = i - j - 1;
-//                    LocationState nextState = board.getLocationState(new Location(x, y));
-//                    if (state == nextState) {
-//                        count++;
-//                        if (count >= 3) return true;
-//                    } else count = 0;
-//                }
-//            }
-//        }
+        for (int i = 0; i < board.getNoRows() - 3; i++) {
+            for (int j = 0; j < board.getNoRows() - 1 - i; j++) {
+                int x = j;
+                int y = board.getNoRows() - 1 - i - j;
+                LocationState state = board.getLocationState(new Location(x, y));
+                if (state != LocationState.EMPTY) {
+                    int xNxt = x + 1;
+                    int yNxt = y - 1;
+                    LocationState nextState = board.getLocationState(new Location(xNxt, yNxt));
+                    if (state == nextState) {
+                        count++;
+                        if (count >= 3) return true;
+                    } else count = 0;
+                }
+            }
+        }
 
 
         //start herer
         count = 0;
-        for (int i = 0; i < board.getNoCols() - 3; i++) {
-            for (int j = 0; j < board.getNoCols() - i; j++) {
-                LocationState state = board.getLocationState(new Location(j, i + j));
+        for (int i = 1; i < board.getNoCols() - 3; i++) {
+            for (int j = 0; j < board.getNoRows() - i + 1; j++) {
+                int x = j + i;
+                int y = board.getNoRows() - j - 1;
+                LocationState state = board.getLocationState(new Location(x, y));
                 if (state != LocationState.EMPTY) {
-                    LocationState nextState = board.getLocationState(new Location(j, j + i + 1));
+                    int xNxt = x + 1;
+                    int yNxt = y - 1;
+                    LocationState nextState = board.getLocationState(new Location(xNxt, yNxt));
                     if (state == nextState) {
                         count++;
                         if (count >= 3) return true;

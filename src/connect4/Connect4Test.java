@@ -20,6 +20,7 @@ public class Connect4Test {
     IPlayer p1, p2;
     Board board;
     Connect4 c4;
+    boolean win;
 
     @Before
     public void setup() {
@@ -35,31 +36,32 @@ public class Connect4Test {
     }
 
 
-    //    @Test
+    @Test
     public void testIsVerticalWin() throws Exception {
         board.setLocationState(new Location(0, 1), LocationState.RED);
         board.setLocationState(new Location(0, 2), LocationState.RED);
         board.setLocationState(new Location(0, 3), LocationState.RED);
         board.setLocationState(new Location(0, 4), LocationState.RED);
-        assertTrue(c4.isWin(board));
+        win = c4.isWin(board);
+        assertTrue(win);
         board.clear();
 
         board.setLocationState(new Location(4, 1), LocationState.RED);
         board.setLocationState(new Location(4, 2), LocationState.RED);
         board.setLocationState(new Location(4, 3), LocationState.YELLOW);
         board.setLocationState(new Location(4, 4), LocationState.RED);
-        System.out.println(c4.isWin(board));
-        assertFalse(c4.isWin(board));
+        win = c4.isWin(board);
+        assertFalse(win);
         board.clear();
     }
 
-    //    @Test
+    @Test
     public void testHorizontalWin() throws Exception {
         board.setLocationState(new Location(1, 0), LocationState.RED);
         board.setLocationState(new Location(2, 0), LocationState.RED);
         board.setLocationState(new Location(3, 0), LocationState.RED);
         board.setLocationState(new Location(4, 0), LocationState.RED);
-        boolean win = c4.isWin(board);
+        win = c4.isWin(board);
         assertTrue(win);
         board.clear();
 
@@ -73,13 +75,13 @@ public class Connect4Test {
         board.clear();
     }
 
-    //    @Test
+    @Test
     public void testUpDownWin() throws Exception {
         board.setLocationState(new Location(0, 0), LocationState.RED);
         board.setLocationState(new Location(1, 1), LocationState.RED);
         board.setLocationState(new Location(2, 2), LocationState.RED);
         board.setLocationState(new Location(3, 3), LocationState.RED);
-        boolean win = c4.isWin(board);
+        win = c4.isWin(board);
         assertTrue(win);
         board.clear();
 
@@ -134,46 +136,55 @@ public class Connect4Test {
 
     @Test
     public void testDownUpWin() {
-//        board.setLocationState(new Location(0, 5), LocationState.RED);
-//        board.setLocationState(new Location(1, 4), LocationState.RED);
-//        board.setLocationState(new Location(2, 3), LocationState.RED);
-//        board.setLocationState(new Location(3, 2), LocationState.RED);
-//        boolean win = c4.isWin(board);
-//        assertTrue(win);
-//        board.clear();
-//
-//        board.setLocationState(new Location(0, 4), LocationState.RED);
-//        board.setLocationState(new Location(1, 3), LocationState.RED);
-//        board.setLocationState(new Location(2, 2), LocationState.RED);
-//        board.setLocationState(new Location(3, 1), LocationState.RED);
-//        win = c4.isWin(board);
-//        assertTrue(win);
-//        board.clear();
-//
-//
-//        board.setLocationState(new Location(0, 3), LocationState.RED);
-//        board.setLocationState(new Location(1, 2), LocationState.RED);
-//        board.setLocationState(new Location(2, 1), LocationState.RED);
-//        board.setLocationState(new Location(3, 0), LocationState.RED);
-//        win = c4.isWin(board);
-//        assertTrue(win);
-//        board.clear();
-//
-//        board.setLocationState(new Location(0, 3), LocationState.RED);
-//        board.setLocationState(new Location(1, 2), LocationState.RED);
-//        board.setLocationState(new Location(2, 1), LocationState.YELLOW);
-//        board.setLocationState(new Location(3, 0), LocationState.RED);
-//        win = c4.isWin(board);
-//        assertTrue(win);
-//        board.clear();
-
-
-        board.setLocationState(new Location(2, 6), LocationState.RED);
-        board.setLocationState(new Location(3, 5), LocationState.RED);
-        board.setLocationState(new Location(4, 4), LocationState.YELLOW);
-        board.setLocationState(new Location(5, 3), LocationState.RED);
-        boolean win = c4.isWin(board);
+        board.setLocationState(new Location(0, 5), LocationState.RED);
+        board.setLocationState(new Location(1, 4), LocationState.RED);
+        board.setLocationState(new Location(2, 3), LocationState.RED);
+        board.setLocationState(new Location(3, 2), LocationState.RED);
+        win = c4.isWin(board);
         assertTrue(win);
+        board.clear();
+
+        board.setLocationState(new Location(0, 4), LocationState.RED);
+        board.setLocationState(new Location(1, 3), LocationState.RED);
+        board.setLocationState(new Location(2, 2), LocationState.RED);
+        board.setLocationState(new Location(3, 1), LocationState.RED);
+        win = c4.isWin(board);
+        assertTrue(win);
+        board.clear();
+
+
+        board.setLocationState(new Location(0, 3), LocationState.RED);
+        board.setLocationState(new Location(1, 2), LocationState.RED);
+        board.setLocationState(new Location(2, 1), LocationState.RED);
+        board.setLocationState(new Location(3, 0), LocationState.RED);
+        win = c4.isWin(board);
+        assertTrue(win);
+        board.clear();
+
+        board.setLocationState(new Location(0, 3), LocationState.RED);
+        board.setLocationState(new Location(1, 2), LocationState.RED);
+        board.setLocationState(new Location(2, 1), LocationState.YELLOW);
+        board.setLocationState(new Location(3, 0), LocationState.RED);
+        win = c4.isWin(board);
+        assertFalse(win);
+        board.clear();
+
+
+        board.setLocationState(new Location(1, 5), LocationState.RED);
+        board.setLocationState(new Location(2, 4), LocationState.RED);
+        board.setLocationState(new Location(3, 3), LocationState.RED);
+        board.setLocationState(new Location(4, 2), LocationState.RED);
+        win = c4.isWin(board);
+        assertTrue(win);
+        board.clear();
+
+        board.setLocationState(new Location(3, 5), LocationState.RED);
+        board.setLocationState(new Location(4, 4), LocationState.RED);
+        board.setLocationState(new Location(5, 3), LocationState.RED);
+        board.setLocationState(new Location(6, 2), LocationState.RED);
+        win = c4.isWin(board);
+        assertTrue(win);
+        board.clear();
 
 
     }
