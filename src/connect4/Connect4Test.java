@@ -73,6 +73,15 @@ public class Connect4Test {
         win = c4.isWin(board);
         assertFalse(win);
         board.clear();
+
+        board.setLocationState(new Location(board.getNoCols() - 1, board.getNoRows() - 1), LocationState.RED);
+        board.setLocationState(new Location(board.getNoCols() - 2, board.getNoRows() - 1), LocationState.RED);
+        board.setLocationState(new Location(board.getNoCols() - 3, board.getNoRows() - 1), LocationState.RED);
+        board.setLocationState(new Location(board.getNoCols() - 4, board.getNoRows() - 1), LocationState.RED);
+        win = c4.isWin(board);
+        assertTrue(win);
+        board.clear();
+
     }
 
     @Test
@@ -84,6 +93,23 @@ public class Connect4Test {
         win = c4.isWin(board);
         assertTrue(win);
         board.clear();
+
+        board.setLocationState(new Location(0, 0), LocationState.RED);
+        board.setLocationState(new Location(1, 1), LocationState.RED);
+        board.setLocationState(new Location(2, 2), LocationState.EMPTY);
+        board.setLocationState(new Location(3, 3), LocationState.RED);
+        win = c4.isWin(board);
+        assertFalse(win);
+        board.clear();
+
+        board.setLocationState(new Location(2, 2), LocationState.RED);
+        board.setLocationState(new Location(3, 3), LocationState.RED);
+        board.setLocationState(new Location(4, 4), LocationState.RED);
+        board.setLocationState(new Location(5, 5), LocationState.RED);
+        win = c4.isWin(board);
+        assertTrue(win);
+        board.clear();
+
 
         board.setLocationState(new Location(0, 2), LocationState.RED);
         board.setLocationState(new Location(1, 3), LocationState.RED);
@@ -101,10 +127,18 @@ public class Connect4Test {
         assertTrue(win);
         board.clear();
 
-        board.setLocationState(new Location(2, 2), LocationState.RED);
-        board.setLocationState(new Location(3, 3), LocationState.RED);
-        board.setLocationState(new Location(4, 4), LocationState.RED);
-        board.setLocationState(new Location(5, 5), LocationState.RED);
+        board.setLocationState(new Location(2, 1), LocationState.RED);
+        board.setLocationState(new Location(3, 2), LocationState.RED);
+        board.setLocationState(new Location(4, 3), LocationState.RED);
+        board.setLocationState(new Location(5, 4), LocationState.RED);
+        win = c4.isWin(board);
+        assertTrue(win);
+        board.clear();
+
+        board.setLocationState(new Location(3, 2), LocationState.RED);
+        board.setLocationState(new Location(4, 3), LocationState.RED);
+        board.setLocationState(new Location(5, 4), LocationState.RED);
+        board.setLocationState(new Location(6, 5), LocationState.RED);
         win = c4.isWin(board);
         assertTrue(win);
         board.clear();
@@ -132,6 +166,15 @@ public class Connect4Test {
         win = c4.isWin(board);
         assertFalse(win);
         board.clear();
+
+        board.setLocationState(new Location(board.getNoCols() - 4, board.getNoRows() - 4), LocationState.RED);
+        board.setLocationState(new Location(board.getNoCols() - 3, board.getNoRows() - 3), LocationState.RED);
+        board.setLocationState(new Location(board.getNoCols() - 2, board.getNoRows() - 2), LocationState.RED);
+        board.setLocationState(new Location(board.getNoCols() - 1, board.getNoRows() - 1), LocationState.RED);
+        win = c4.isWin(board);
+        assertTrue(win);
+        board.clear();
+
     }
 
     @Test

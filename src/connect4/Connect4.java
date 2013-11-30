@@ -149,8 +149,6 @@ public class Connect4 {
             }
         }
 
-
-        //start herer
         count = 0;
         for (int i = 1; i < board.getNoCols() - 3; i++) {
             for (int j = 0; j < board.getNoRows() - i + 1; j++) {
