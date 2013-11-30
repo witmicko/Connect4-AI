@@ -3,6 +3,7 @@ package connect4;
 import edu.princeton.cs.introcs.StdIn;
 
 import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 
 
 /**
@@ -33,13 +34,15 @@ public class HumanPlayer extends IPlayer {
         } catch (InputMismatchException e) {
             StdIn.readLine();
             System.out.println("NaN - try again");
+        } catch (NoSuchElementException e) {
+            System.exit(0);
         }
         return -1;
     }
 
     private boolean isValidMove(int col, Board board) {
         if (col < 0 || col >= board.getNoCols()) return false;
-        if(board.getLocationState(new Location(col,0))==LocationState.EMPTY)return true;
+        if (board.getLocationState(new Location(col, 0)) == LocationState.EMPTY) return true;
         System.out.println("Invalid Move, try again");
         return false;
     }

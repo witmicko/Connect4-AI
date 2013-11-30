@@ -1,6 +1,8 @@
 package connect4;
 
 
+import java.util.NoSuchElementException;
+
 /**
  * Created with IntelliJ IDEA.
  * User: michal
