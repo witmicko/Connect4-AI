@@ -38,10 +38,11 @@ class ComputerPlayer_WinTake_Block extends IPlayer {
             c4.takeTurn();
             boolean isWin = c4.isWin(board);
             if (isWin) {
-                System.out.println("I can win. make a move at: " + (i+1) + " to slaughter human");
-                System.out.println("My Color is "+this.getPlayerState());
+                System.out.println("I can win. make a move at: " + (i + 1) + " to slaughter human");
+                System.out.println("My Color is " + this.getPlayerState());
                 if (board.getLocationState(new Location(i, 0)) == LocationState.EMPTY) return i;
-            }undoMove(board,i);
+            }
+            undoMove(board, i);
         }
         c4.nextPlayer();
         for (int i = 0; i < board.getNoCols(); i++) {
@@ -49,9 +50,10 @@ class ComputerPlayer_WinTake_Block extends IPlayer {
             c4.takeTurn();
             boolean isWin = c4.isWin(board);
             if (isWin) {
-                System.out.println("Master can win. Make a move at: " + (i+1) + " to block");
-                if (board.getLocationState(new Location(i, 0)) == LocationState.EMPTY)return i;
-            }undoMove(board,i);
+                System.out.println("Master can win. Make a move at: " + (i + 1) + " to block");
+                if (board.getLocationState(new Location(i, 0)) == LocationState.EMPTY) return i;
+            }
+            undoMove(board, i);
         }
         return -1;
     }
@@ -69,11 +71,12 @@ class ComputerPlayer_WinTake_Block extends IPlayer {
 
     private void undoMove(Board board, int col) {
         int i = 0;
-        while (board.getLocationState(new Location(col, i)) == LocationState.EMPTY && i < board.getNoRows()-1) {
+        while (board.getLocationState(new Location(col, i)) == LocationState.EMPTY && i < board.getNoRows() - 1) {
             if (board.getLocationState(new Location(col, i + 1)) != LocationState.EMPTY) {
                 board.setLocationState(new Location(col, (i + 1)), LocationState.EMPTY);
                 break;
-            }i++;
+            }
+            i++;
 
         }
     }
