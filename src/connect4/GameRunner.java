@@ -13,14 +13,18 @@ import java.util.NoSuchElementException;
 public class GameRunner {
     public static void main(String[] args) {
         IPlayer player1 = new ComputerPlayer_1_random(LocationState.RED);
-        IPlayer player2 = new HumanPlayer(LocationState.YELLOW);
+        IPlayer player2 = new ComputerPlayer_1_random(LocationState.YELLOW);
+//        IPlayer player2 = new HumanPlayer(LocationState.YELLOW);
         Board board = new Board(7, 6);
         Connect4 connect4 = new Connect4(player1, player2, board);
 
 
         boolean win = false;
         while (!win) {
-            while(!connect4.takeTurn())connect4.takeTurn() ;
+            while(!connect4.takeTurn()){
+                System.out.println("invalid move");
+                connect4.takeTurn() ;
+            }
             connect4.nextPlayer();
             System.out.println(connect4.getBoard().toString());
             win = connect4.isWin(board);

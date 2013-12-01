@@ -23,9 +23,6 @@ public class ComputerPlayer_1_random extends IPlayer {
     public int getMove(Board board) {
         this.board = copyBoard(board);
         setupGame();
-        System.out.println("VVV*********************************************");
-        System.out.println(this.board.toString());
-        System.out.println("^^^*********************************************");
 
         int moveTo = checkForWinner(this.board);
 
@@ -42,6 +39,7 @@ public class ComputerPlayer_1_random extends IPlayer {
             boolean isWin = c4.isWin(board);
             if (isWin) {
                 System.out.println("I can win. make a move at: " + (i+1) + " to slaughter human");
+                System.out.println("My Color is "+this.getPlayerState());
                 return i;
             }undoMove(board,i);
         }
@@ -82,13 +80,9 @@ public class ComputerPlayer_1_random extends IPlayer {
 
 
     public void setupGame() {
-        System.out.println("my true state: " + this.getPlayerState());
-
         this.me = new Player(this.getPlayerState());
-        System.out.println("my state: " + this.me.getPlayerState());
         LocationState otherState = (me.getPlayerState() == LocationState.RED) ? LocationState.YELLOW : LocationState.RED;
         this.other = new Player(otherState);
-        System.out.println("other state: " + this.other.getPlayerState());
         this.c4 = new Connect4(me, other, board);
     }
 
