@@ -57,7 +57,6 @@ public class Connect4 {
                 }
             }
         }
-
         return false;
     }
 
@@ -78,8 +77,8 @@ public class Connect4 {
     }
 
     private boolean upDown(Board board) {
-        int count = 0;
         for (int i = 0; i < board.getNoRows() - 3; i++) {
+            int count = 0;
             for (int j = 0; j < (board.getNoRows() - 1 - i); j++) {
                 int x = j;
                 int y = j + i;
@@ -89,10 +88,9 @@ public class Connect4 {
                     return true;
                 }
             }
-            count=0;
         }
-        count = 0;
         for (int i = 1; i < board.getNoCols() - 3; i++) {
+            int count = 0;
             for (int j = 0; j < board.getNoRows() - i; j++) {
                 int x = j + i;
                 int y = j;
@@ -102,14 +100,13 @@ public class Connect4 {
                     return true;
                 }
             }
-            count=0;
         }
         return false;
     }
 
     private boolean downUp(Board board) {
-        int count = 0;
         for (int i = 0; i < board.getNoRows() - 3; i++) {
+            int count=0;
             for (int j = 0; j < board.getNoRows() - 1 - i; j++) {
                 int x = j;
                 int y = (board.getNoRows() - 1) - i - j;
@@ -119,10 +116,9 @@ public class Connect4 {
                     return true;
                 }
             }
-            count=0;
         }
-        count = 0;
         for (int i = 1; i < board.getNoCols() - 3; i++) {
+            int count = 0;
             for (int j = 0; j < board.getNoRows() - i; j++) {
                 int x = j + i;
                 int y = board.getNoRows() - j - 1;
@@ -132,7 +128,6 @@ public class Connect4 {
                     return true;
                 }
             }
-            count=0;
         }
         return false;
     }
