@@ -39,7 +39,8 @@ public class Connect4 {
      * @return boolean to detect winner
      */
     public boolean isWin(Board board) {
-        if(this.numTurns < 7)return false;
+//        no setter or public access to numTurns breaks AI win checks
+//        if(this.numTurns < 7)return false;
         return downUp(board) || upDown(board) || horizontalMatch(board) || verticalMatch(board);
     }
 
@@ -98,7 +99,7 @@ public class Connect4 {
 
     private boolean downUp(Board board) {
         for (int i = 0; i < board.getNoRows() - 3; i++) {
-            int count=0;
+            int count = 0;
             for (int j = 0; j < board.getNoRows() - 1 - i; j++) {
                 int x = j;
                 int y = (board.getNoRows() - 1) - i - j;
@@ -122,7 +123,7 @@ public class Connect4 {
         LocationState state = board.getLocationState(new Location(x, y));
         if (state != LocationState.EMPTY) {
             LocationState nextState = board.getLocationState(new Location(xNext, yNext));
-            if (state == nextState) return count+1;
+            if (state == nextState) return count + 1;
         }
         return 0;
     }
@@ -160,10 +161,6 @@ public class Connect4 {
 
     public Board getBoard() {
         return board;
-    }
-
-    public void setNumTurns(int numTurns) {
-        this.numTurns = numTurns;
     }
 
     /**

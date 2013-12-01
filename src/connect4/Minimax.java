@@ -1,7 +1,5 @@
 package connect4;
 
-import java.util.Random;
-
 /**
  * Example Computer Player.
  * CREATE YOUR OWN VERSION OF THIS, REPLACING THE NUMBER IN THE CLASS NAME
@@ -13,7 +11,7 @@ public class Minimax extends IPlayer {
     private boolean debug = true;
     private int numTurns;
     private Player me, other;
-    private Board board;
+    private Board boardCpy;
     private Connect4 c4;
     private int maxDepth; //0 - random > more = harder ai.
 
@@ -23,45 +21,46 @@ public class Minimax extends IPlayer {
 
     @Override
     public int getMove(Board board) {
-        this.board = copyBoard(board);
+        this.boardCpy = copyBoard(board);
         setupGame();
-        if(this.numTurns < 2)return firstMove(this.board);
+        if(this.numTurns < 2)return firstMove(this.boardCpy);
 
-        int moveTo = checkForWinner(this.board);
-
-
+        int moveTo = checkForWinner(this.boardCpy);
         int x = (moveTo < 0) ? (int) (Math.random() * 7) : moveTo;
-        //TODO
+        debugPrint("move to: "+moveTo + "\n x: "+x);
         return x;
     }
 
 
-    private int checkForWinner(Board board) {
-        for (int i = 0; i < board.getNoCols(); i++) {
+    private int checkForWinner(Board boardCpy) {
+        for (int i = 0; i < boardCpy.getNoCols(); i++) {
             this.me.moveTo = i;
             c4.takeTurn();
-            boolean isWin = c4.isWin(board);
+            boolean isWin = c4.isWin(boardCpy);
+//            debugPrint(isWin+"");
             if (isWin) {
                 debugPrint("I can win. make a move at: " + (i + 1) + " to slaughter human\n" + "My Color is " + this.getPlayerState());
-                if (board.getLocationState(new Location(i, 0)) == LocationState.EMPTY) return i;
-            }
-            undoMove(board, i);
+                if (boardCpy.getLocationState(new Location(i, 0)) == LocationState.EMPTY)return i;
+            }undoMove(boardCpy, i);
         }
+
         c4.nextPlayer();
-        for (int i = 0; i < board.getNoCols(); i++) {
+        for (int i = 0; i < boardCpy.getNoCols(); i++) {
             this.other.moveTo = i;
             c4.takeTurn();
-            boolean isWin = c4.isWin(board);
+            boolean isWin = c4.isWin(boardCpy);
             if (isWin) {
                 debugPrint("Master can win. Make a move at: " + (i + 1) + " to block" + "My Color is " + this.getPlayerState());
-                if (board.getLocationState(new Location(i, 0)) == LocationState.EMPTY) return i;
-            }
-            undoMove(board, i);
+                if (boardCpy.getLocationState(new Location(i, 0)) == LocationState.EMPTY) return i;
+            }undoMove(boardCpy, i);
         }
         return -1;
     }
 
-    //copy board and count number of turns
+
+
+
+    //copy boardCpy and count number of turns
     public Board copyBoard(Board board) {
         Board copy = new Board(board.getNoCols(), board.getNoRows());
         int countTurns = 0;
@@ -105,7 +104,7 @@ public class Minimax extends IPlayer {
         this.me = new Player(this.getPlayerState());
         LocationState otherState = (me.getPlayerState() == LocationState.RED) ? LocationState.YELLOW : LocationState.RED;
         this.other = new Player(otherState);
-        this.c4 = new Connect4(me, other, board);
+        this.c4 = new Connect4(me, other, boardCpy);
     }
 
 

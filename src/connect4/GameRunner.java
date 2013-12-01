@@ -12,9 +12,9 @@ import java.util.NoSuchElementException;
  */
 public class GameRunner {
     public static void main(String[] args) {
-        IPlayer player1 = new ComputerPlayer_WinTake_Block(LocationState.RED);
-        IPlayer player2 = new Minimax(LocationState.YELLOW);
-//        IPlayer player2 = new HumanPlayer(LocationState.YELLOW);
+//        IPlayer player1 = new ComputerPlayer_WinTake_Block(LocationState.RED);
+        IPlayer player1 = new Minimax(LocationState.YELLOW);
+        IPlayer player2 = new HumanPlayer(LocationState.RED);
         Board board = new Board(7, 6);
         Connect4 connect4 = new Connect4(player1, player2, board);
 

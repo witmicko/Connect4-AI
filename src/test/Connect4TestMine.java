@@ -29,7 +29,7 @@ public class Connect4TestMine {
         p2 = new ComputerPlayer_WinTake_Block (LocationState.RED);
         board = new Board(7, 6);
         c4 = new Connect4(p1, p2, board);
-        c4.setNumTurns(9);
+//        c4.setNumTurns(9);
     }
 
     @After
