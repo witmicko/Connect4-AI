@@ -9,12 +9,12 @@ import java.util.Random;
  *
  * @author Frank
  */
-public class ComputerPlayer_1_random extends IPlayer {
+class ComputerPlayer_WinTake_Block extends IPlayer {
     private Player me, other;
     private Board board;
     private Connect4 c4;
 
-    public ComputerPlayer_1_random(LocationState playerState) {
+    public ComputerPlayer_WinTake_Block(LocationState playerState) {
         super(playerState);
 
     }

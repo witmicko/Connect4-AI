@@ -39,7 +39,7 @@ public class Connect4 {
      * @return boolean to detect winner
      */
     public boolean isWin(Board board) {
-//        if(this.numTurns < 7)return false;
+        if(this.numTurns < 7)return false;
         return downUp(board) || upDown(board) || horizontalMatch(board) || verticalMatch(board);
     }
 
@@ -51,10 +51,8 @@ public class Connect4 {
                 int x = j;
                 int y = i;
                 count = compareStates(x, y, x + 1, y, board, count);
-                if (count >= 3) {
-                    System.out.println("horizontal win");
-                    return true;
-                }
+                if (count >= 3) return true;
+
             }
         }
         return false;
@@ -67,10 +65,8 @@ public class Connect4 {
                 int x = i;
                 int y = j;
                 count = compareStates(x, y, x, y + 1, board, count);
-                if (count >= 3) {
-                    System.out.println("vert win at col " + (i + 1));
-                    return true;
-                }
+                if (count >= 3) return true;
+
             }
         }
         return false;
@@ -83,10 +79,8 @@ public class Connect4 {
                 int x = j;
                 int y = j + i;
                 count = compareStates(x, y, x + 1, y + 1, board, count);
-                if (count >= 3) {
-                    System.out.println("1st \\ win");
-                    return true;
-                }
+                if (count >= 3) return true;
+
             }
         }
         for (int i = 1; i < board.getNoCols() - 3; i++) {
@@ -95,10 +89,8 @@ public class Connect4 {
                 int x = j + i;
                 int y = j;
                 count = compareStates(x, y, x + 1, y + 1, board, count);
-                if (count >= 3) {
-                    System.out.println("2nd \\ win");
-                    return true;
-                }
+                if (count >= 3) return true;
+
             }
         }
         return false;
@@ -111,10 +103,7 @@ public class Connect4 {
                 int x = j;
                 int y = (board.getNoRows() - 1) - i - j;
                 count = compareStates(x, y, x + 1, y - 1, board, count);
-                if (count >= 3) {
-                    System.out.println("1st / win");
-                    return true;
-                }
+                if (count >= 3) return true;
             }
         }
         for (int i = 1; i < board.getNoCols() - 3; i++) {
@@ -123,10 +112,7 @@ public class Connect4 {
                 int x = j + i;
                 int y = board.getNoRows() - j - 1;
                 count = compareStates(x, y, x + 1, y - 1, board, count);
-                if (count >= 3) {
-                    System.out.println("2nd / win");
-                    return true;
-                }
+                if (count >= 3) return true;
             }
         }
         return false;
