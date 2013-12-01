@@ -22,12 +22,12 @@ public class HumanPlayer extends IPlayer {
     @Override
     public int getMove(Board board) {
         int col = -1;
-        while (!isValidMove(col, board)) col = getCol("Enter column number: \n", board);
+        while (isInvalidMove(col, board)) col = getCol();
         return col;
     }
 
-    private int getCol(String prompt, Board board) {
-        System.out.println(prompt);
+    private int getCol() {
+        System.out.println("Enter column number: \n");
         try {
             int col = StdIn.readInt();
             return col - 1;
@@ -40,11 +40,11 @@ public class HumanPlayer extends IPlayer {
         return -1;
     }
 
-    private boolean isValidMove(int col, Board board) {
-        if (col < 0 || col >= board.getNoCols()) return false;
-        if (board.getLocationState(new Location(col, 0)) == LocationState.EMPTY) return true;
+    private boolean isInvalidMove(int col, Board board) {
+        if (col < 0 || col >= board.getNoCols()) return true;
+        if (board.getLocationState(new Location(col, 0)) == LocationState.EMPTY) return false;
         System.out.println("Invalid Move, try again");
-        return false;
+        return true;
     }
 
 //test

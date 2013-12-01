@@ -20,8 +20,8 @@ public class GameRunner {
 
         boolean win = false;
         while (!win) {
-            connect4.nextPlayer();
             while(!connect4.takeTurn())connect4.takeTurn() ;
+            connect4.nextPlayer();
             System.out.println(connect4.getBoard().toString());
             win = connect4.isWin(board);
         }
