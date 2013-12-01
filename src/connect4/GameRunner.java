@@ -22,7 +22,6 @@ public class GameRunner {
         boolean win = false;
         while (!win) {
             while(!connect4.takeTurn()){
-                System.out.println("invalid move");
                 connect4.takeTurn() ;
             }
             connect4.nextPlayer();

@@ -26,7 +26,7 @@ public class ComputerPlayer_1_random extends IPlayer {
 
         int moveTo = checkForWinner(this.board);
 
-        int x = (moveTo < 0) ? (int) (Math.random() * 5) : moveTo;
+        int x = (moveTo < 0) ? (int) (Math.random() * 7) : moveTo;
         //TODO
         return x;
     }
@@ -40,7 +40,7 @@ public class ComputerPlayer_1_random extends IPlayer {
             if (isWin) {
                 System.out.println("I can win. make a move at: " + (i+1) + " to slaughter human");
                 System.out.println("My Color is "+this.getPlayerState());
-                return i;
+                if (board.getLocationState(new Location(i, 0)) == LocationState.EMPTY) return i;
             }undoMove(board,i);
         }
         c4.nextPlayer();
@@ -50,7 +50,7 @@ public class ComputerPlayer_1_random extends IPlayer {
             boolean isWin = c4.isWin(board);
             if (isWin) {
                 System.out.println("Master can win. Make a move at: " + (i+1) + " to block");
-                return i;
+                if (board.getLocationState(new Location(i, 0)) == LocationState.EMPTY)return i;
             }undoMove(board,i);
         }
         return -1;

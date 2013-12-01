@@ -73,7 +73,7 @@ public class Board {
         String s = "" + indexes;
         for (int i = 0; i < noRows; i++) {
             for (int j = 0; j < noCols; j++) {
-                if (board[j][i] == LocationState.EMPTY) s += " _ ";
+                if (board[j][i] == LocationState.EMPTY) s += "   ";
                 if (board[j][i] == LocationState.RED) s += " X ";
                 if (board[j][i] == LocationState.YELLOW) s += " O ";
 //				s += (board[j][i] + "\t");
