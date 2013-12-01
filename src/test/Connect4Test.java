@@ -33,7 +33,7 @@ public class Connect4Test {
 		assertTrue(board.getLocationState(new Location(0, 0)) == LocationState.EMPTY);
 
 		//CHANGE THIS TO INCLUDE YOUR COMPUTER PLAYER 
-		IPlayer computerPlayer = new ComputerPlayer_1_random(LocationState.YELLOW);
+		IPlayer computerPlayer = new ComputerPlayer_WinTake_Block(LocationState.YELLOW);
 
 		int move = computerPlayer.getMove(board);
 
