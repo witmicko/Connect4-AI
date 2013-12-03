@@ -1,6 +1,7 @@
 package connect4;
 
 import edu.princeton.cs.introcs.StdRandom;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -12,7 +13,7 @@ import java.util.Random;
  * @author Michal
  */
 public class ComputerPlayer20057303 extends IPlayer {
-    private final int LIMIT = 250;
+    private final int LIMIT = 1000;
     private final boolean debug = true;
     private Player me, other;
 
@@ -65,7 +66,7 @@ public class ComputerPlayer20057303 extends IPlayer {
         int p1FirstMove = 0;
         //array of moves, index represents column, for each our win in sim. +1 else -1.
         // Perhaps changing it around would make ai more defensive.
-        int[] cols = new int[board.getNoCols()];
+        int[] myCols = new int[board.getNoCols()];
 
         for (int i = 0; i < LIMIT; i++) {
             Player p1 = new Player(me.getPlayerState());
@@ -74,6 +75,7 @@ public class ComputerPlayer20057303 extends IPlayer {
             Board boardCopy = copyBoard(board);
 
             Connect4 c4Copy = new Connect4(p1, p2, boardCopy);
+//            Connect4 c4Copy = new Connect4(p2,p1, boardCopy);
             sim:
             {
                 while (!c4Copy.isWin(boardCopy)) {
@@ -85,46 +87,54 @@ public class ComputerPlayer20057303 extends IPlayer {
                     if (p1.moveTo == -1) break sim;
 
                     //save first move. this will be used to calculate how many wins looses are for each starting location.
-                    if (firstMove) {
-                        p1FirstMove = p1.moveTo;
-                        firstMove = false;
-                    }
+                    if (firstMove) p1FirstMove = p1.moveTo;
+//                    if (firstMove && p1.win) return p1.moveTo;
+
                     //if ai has next winning move, inc value for column. break out
                     if (p1.win) {
-                        cols[p1FirstMove]++;
+                        myCols[p1FirstMove]++;
                         break sim;
                     }
                     //if no win, or board not full take turn, and get next player.
                     c4Copy.takeTurn();
                     c4Copy.nextPlayer();
+
+                    // checking for opponent win.
                     p2.moveTo = checkForWinner(c4Copy, p2, boardCopy);
+
                     //as before ^ if board is full, break out.
                     if (p2.moveTo == -1) {
                         break sim;
                     }
+                    if (firstMove && p2.win) {
+//                        System.out.println("block at " + (p2.moveTo + 1));
+                        return p2.moveTo;
+                    }
 
                     //if opponent has a winning move. Decrease val for col. and break out.
                     if (p2.win) {
-                        cols[p1FirstMove]--;
+                        myCols[p1FirstMove]--;
                         break sim;
                     }
                     //if we got here, repeat.
                     c4Copy.takeTurn();
                     c4Copy.nextPlayer();
+                    firstMove = false;
                 }
             }
         }
 
         //Find max value for next move. Greater the value, more wins it spanned out using this next move.
         int max = Integer.MIN_VALUE;
-        int bestMove=0;
-        for (int i = 0; i < cols.length; i++) {
-            if (cols[i] > max && board.getLocationState(new Location(i, 0)) == LocationState.EMPTY) {
-                max = cols[i];
-                bestMove = i;
+        int myBestMove = 0;
+        for (int i = 0; i < myCols.length; i++) {
+            if (myCols[i] > max && board.getLocationState(new Location(i, 0)) == LocationState.EMPTY) {
+                max = myCols[i];
+                myBestMove = i;
             }
         }
-        return bestMove;
+        //if myCols[bestMove] < 0
+        return myBestMove;
     }
 
     //copy game board
@@ -178,6 +188,4 @@ public class ComputerPlayer20057303 extends IPlayer {
             return this.moveTo;
         }
     }
-
-
 }
