@@ -9,39 +9,43 @@ package connect4;
  */
 public class BoardChecker {
 
-    public static boolean matchFor(Board board, int count) {
+    public static boolean matchFor(LocationState state, Board board, int count, String pattern) {
         //count 3 for win.
-        return downUp(board, count) || upDown(board, count) || horizontalMatch(board, count) || verticalMatch(board, count);
+        boolean dnUp = downUp(state, board, count,pattern);
+        boolean upDn = upDown(state, board, count,pattern);
+        boolean hor = horizontalMatch(state, board, count,pattern);
+        boolean ver = verticalMatch(state, board, count,pattern);
+        return dnUp || upDn || hor || ver;
     }
 
 
-    private static boolean horizontalMatch(Board board, int count) {
+    private static boolean horizontalMatch(LocationState state, Board board, int count, String pattern) {
+        String str = "";
         for (int i = 0; i < board.getNoRows(); i++) {
             int inRow = 0;
             for (int j = 0; j < board.getNoCols() - 1; j++) {
                 int x = j, y = i;
-                inRow = compareStates(x, y, x + 1, y, board, inRow);
+                str = compareStates(x, y, x + 1, y, board, inRow,state);
                 if (inRow >= count) return true;
             }
         }
         return false;
     }//end horizontalMatch()
 
-    private static boolean verticalMatch(Board board, int count) {
+    private static boolean verticalMatch(LocationState state, Board board, int count, String pattern) {
         for (int i = 0; i < board.getNoCols(); i++) {
             int inRow = 0;
             for (int j = 0; j < board.getNoRows() - 1; j++) {
                 int x = i;
                 int y = j;
-                inRow = compareStates(x, y, x, y + 1, board, inRow);
+                inRow = compareStates(x, y, x, y + 1, board, inRow, state);
                 if (inRow >= count) return true;
-
             }
         }
         return false;
     }//end verticalMatch()
 
-    private static boolean upDown(Board board, int count) {
+    private static boolean upDown(LocationState state, Board board, int count, String pattern) {
 //      *
 //      **
 //      ***
@@ -52,7 +56,7 @@ public class BoardChecker {
             for (int j = 0; j < (board.getNoRows() - 1 - i); j++) {
                 int x = j;
                 int y = j + i;
-                inRow = compareStates(x, y, x + 1, y + 1, board, inRow);
+                inRow = compareStates(x, y, x + 1, y + 1, board, inRow, state);
                 if (inRow >= count) return true;
 
             }
@@ -67,7 +71,7 @@ public class BoardChecker {
             for (int j = 0; j < board.getNoRows() - i; j++) {
                 int x = j + i;
                 int y = j;
-                inRow = compareStates(x, y, x + 1, y + 1, board, inRow);
+                inRow = compareStates(x, y, x + 1, y + 1, board, inRow, state);
                 if (inRow >= count) return true;
 
             }
@@ -75,7 +79,7 @@ public class BoardChecker {
         return false;
     }// end upDown()
 
-    private static boolean downUp(Board board, int count) {
+    private static boolean downUp(LocationState state, Board board, int count, String pattern) {
 //      *****
 //      ****
 //      ***
@@ -86,7 +90,7 @@ public class BoardChecker {
             for (int j = 0; j < board.getNoRows() - 1 - i; j++) {
                 int x = j;
                 int y = (board.getNoRows() - 1) - i - j;
-                inRow = compareStates(x, y, x + 1, y - 1, board, inRow);
+                inRow = compareStates(x, y, x + 1, y - 1, board, inRow, state);
                 if (inRow >= count) return true;
             }
         }
@@ -100,19 +104,19 @@ public class BoardChecker {
             for (int j = 0; j < board.getNoRows() - i; j++) {
                 int x = j + i;
                 int y = board.getNoRows() - j - 1;
-                inRow = compareStates(x, y, x + 1, y - 1, board, inRow);
+                inRow = compareStates(x, y, x + 1, y - 1, board, inRow, state);
                 if (inRow >= count) return true;
             }
         }
         return false;
     }//end downUp()
 
-    private static int compareStates(int x, int y, int xNext, int yNext, Board board, int inRow) {
-        LocationState state = board.getLocationState(new Location(x, y));
-        if (state != LocationState.EMPTY) {
+    private static String compareStates(int x, int y, int xNext, int yNext, Board board, int inRow, LocationState state) {
+        LocationState currLoc = board.getLocationState(new Location(x, y));
+        if (currLoc != LocationState.EMPTY) {
             LocationState nextState = board.getLocationState(new Location(xNext, yNext));
             if (state == nextState) return inRow + 1;
         }
-        return 0;
+        return -1;
     }// end compareStates()
 }

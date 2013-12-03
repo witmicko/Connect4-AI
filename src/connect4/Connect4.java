@@ -42,9 +42,8 @@ public class Connect4 {
     public boolean isWin(Board board) {
         //use extra class so we can also check for 3 or 2 in a line
         //3 matching pairs = 4 in a row
-        return BoardChecker.matchFor(board,3);
+        return BoardChecker.matchFor(currentPlayer.getPlayerState(), board, 3,"++++");
     }
-
 
 
     /**
@@ -90,7 +89,7 @@ public class Connect4 {
         int newAiWins = 0;
         int oldWins = 0;
         Stopwatch s = new Stopwatch();
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 100; i++) {
 //            IPlayer player1 = new HumanPlayer(LocationState.YELLOW);
             IPlayer player1 = new ComputerPlayer_1_random(LocationState.YELLOW);
             IPlayer player2 = new ComputerPlayer20057303(LocationState.RED);

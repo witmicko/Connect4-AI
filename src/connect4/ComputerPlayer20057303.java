@@ -1,8 +1,7 @@
 package connect4;
 
-import edu.princeton.cs.introcs.StdRandom;
-
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -13,7 +12,7 @@ import java.util.Random;
  * @author Michal
  */
 public class ComputerPlayer20057303 extends IPlayer {
-    private final int LIMIT = 1000;
+    private final int LIMIT = 500;
     private final boolean debug = true;
     private Player me, other;
 
@@ -48,21 +47,25 @@ public class ComputerPlayer20057303 extends IPlayer {
 //    }
 
 
-    private int checkForWinner(Connect4 c4, Player me, Board boardCpy) {
-        me.win = false;
+    private int[] checkForWinner(Connect4 c4, Player me, Board boardCpy) {
+        int[] scores = new int[boardCpy.getNoCols()];
         for (int i = 0; i < boardCpy.getNoCols(); i++) {
-            LocationState thisState = boardCpy.getLocationState(new Location(i, 0));
-            if (thisState == LocationState.EMPTY) me.moveTo = i;
-            else break;
-            c4.takeTurn();
-            if (c4.isWin(boardCpy)) {
+            int score = 0;
+            if (boardCpy.getLocationState(new Location(i, 0)) == LocationState.EMPTY) {
+                me.moveTo = i;
+                c4.takeTurn();
+                //if win
+                if (BoardChecker.matchFor(me.getPlayerState(), boardCpy, 3, "++++")) {
                     me.win = true;
-                    return i;
-            }
-            undoMove(boardCpy, i);
+                    score += 100;
+                }
+                //if 3 in a row.
+//                else if (BoardChecker.matchFor(boardCpy, 2)) score += 50;
+                scores[i] = score;
+                undoMove(boardCpy, i);
+            } else break;
         }
-        //if no winner return random empty location.
-        return findRandomEmpty(boardCpy);
+        return scores;
     }
 
     private int findRandomEmpty(Board boardCpy) {
@@ -79,9 +82,8 @@ public class ComputerPlayer20057303 extends IPlayer {
         } else return -1;
     }
 
-
     private int simulateGame(Board board) {
-        int p1FirstMove = 0;
+        int p1FirstMove = -1;
         //array of moves, index represents column, for each our win in sim. +1 else -1.
         // Perhaps changing it around would make ai more defensive.
         int[] myCols = new int[board.getNoCols()];
@@ -93,45 +95,45 @@ public class ComputerPlayer20057303 extends IPlayer {
             Board boardCopy = copyBoard(board);
 
             Connect4 c4Copy = new Connect4(p1, p2, boardCopy);
-//            Connect4 c4Copy = new Connect4(p2,p1, boardCopy);
             sim:
             {
-                while (!c4Copy.isWin(boardCopy)) {
+                while (!BoardChecker.matchFor(p1.getPlayerState(), boardCopy, 3, "++++") ||
+                        !BoardChecker.matchFor(p2.getPlayerState(), boardCopy, 3, "++++")) {
+//                    System.out.println("bazzinga");
                     //Player 1 (me/ai)
-                    p1.moveTo = checkForWinner(c4Copy, p1, boardCopy);
-
+                    int[] scores = checkForWinner(c4Copy, p1, boardCopy);
+                    p1.moveTo = getMax(scores, boardCopy);
                     //check for winner uses method to find random EMPTY col, if no winning scenario.
                     // -1 if board is full (due to lack of getter and setter for numTurns in main Connect4 class)
                     if (p1.moveTo == -1) break sim;
-
                     //save first move. this will be used to calculate how many wins looses are for each starting location.
                     if (firstMove) p1FirstMove = p1.moveTo;
-                    if (firstMove && p1.win && i==0) return p1.moveTo;
+                    myCols[p1FirstMove] += scores[p1.moveTo];
+//                    if (firstMove && p1.win && i == 0) return p1.moveTo;
 
                     //if ai has next winning move, inc value for column. break out
-                    if (p1.win) {
-                        myCols[p1FirstMove]++;
-                        break sim;
-                    }
+                    if (p1.win) break sim;
+
                     //if no win, or board not full take turn, and get next player.
                     c4Copy.takeTurn();
                     c4Copy.nextPlayer();
 
                     // checking for opponent win.
-                    p2.moveTo = checkForWinner(c4Copy, p2, boardCopy);
+                    scores = checkForWinner(c4Copy, p2, boardCopy);
+                    p2.moveTo = getMax(scores, boardCopy);
 
                     //as before ^ if board is full, break out.
-                    if (p2.moveTo == -1) {
-                        break sim;
-                    }
-                    if (firstMove && p2.win && i==0) {
+                    if (p2.moveTo == -1) break sim;
+
+                    myCols[p1FirstMove] -= scores[p2.moveTo];
+                    if (firstMove && p2.win && i == 0) {
 //                        System.out.println("block at " + (p2.moveTo + 1) + "sim: "+i);
                         return p2.moveTo;
                     }
 
                     //if opponent has a winning move. Decrease val for col. and break out.
                     if (p2.win) {
-                        myCols[p1FirstMove]--;
+
                         break sim;
                     }
                     //if we got here, repeat.
@@ -143,17 +145,113 @@ public class ComputerPlayer20057303 extends IPlayer {
         }
 
         //Find max value for next move. Greater the value, more wins it spanned out using this next move.
+//        int max = Integer.MIN_VALUE;
+//        int myBestMove = 0;
+//        for (int i = 0; i < myCols.length; i++) {
+//            if (myCols[i] > max && board.getLocationState(new Location(i, 0)) == LocationState.EMPTY) {
+//                max = myCols[i];
+//                myBestMove = i;
+//            }
+//        }
+        //if myCols[bestMove] < 0
+//        System.out.println();
+        return getMax(myCols, board);
+    }
+
+    private int getMax(int[] candidateMoves, Board board) {
+        if (candidateMoves.length == 0) return -1;
         int max = Integer.MIN_VALUE;
         int myBestMove = 0;
-        for (int i = 0; i < myCols.length; i++) {
-            if (myCols[i] > max && board.getLocationState(new Location(i, 0)) == LocationState.EMPTY) {
-                max = myCols[i];
+        for (int i = 0; i < candidateMoves.length; i++) {
+            if (candidateMoves[i] > max && board.getLocationState(new Location(i, 0)) == LocationState.EMPTY) {
+                max = candidateMoves[i];
                 myBestMove = i;
             }
         }
-        //if myCols[bestMove] < 0
+        if (candidateMoves[myBestMove] > 0) return myBestMove;
+
+        //check if they re all even
+        int[] check = Arrays.copyOf(candidateMoves, candidateMoves.length);
+        Arrays.sort(check);
+        if (check[0] == check[check.length - 1]) return findRandomEmpty(board);
         return myBestMove;
-    }
+    }//end getMax()
+
+
+//    private int simulateGame(Board board) {
+//        int p1FirstMove = 0;
+//        //array of moves, index represents column, for each our win in sim. +1 else -1.
+//        // Perhaps changing it around would make ai more defensive.
+//        int[] myCols = new int[board.getNoCols()];
+//
+//        for (int i = 0; i < LIMIT; i++) {
+//            Player p1 = new Player(me.getPlayerState());
+//            Player p2 = new Player(other.getPlayerState());
+//            boolean firstMove = true;
+//            Board boardCopy = copyBoard(board);
+//
+//            Connect4 c4Copy = new Connect4(p1, p2, boardCopy);
+////            Connect4 c4Copy = new Connect4(p2,p1, boardCopy);
+//            sim:
+//            {
+//                while (!c4Copy.isWin(boardCopy)) {
+//                    //Player 1 (me/ai)
+//                    p1.moveTo = checkForWinner(c4Copy, p1, boardCopy);
+//
+//                    //check for winner uses method to find random EMPTY col, if no winning scenario.
+//                    // -1 if board is full (due to lack of getter and setter for numTurns in main Connect4 class)
+//                    if (p1.moveTo == -1) break sim;
+//
+//                    //save first move. this will be used to calculate how many wins looses are for each starting location.
+//                    if (firstMove) p1FirstMove = p1.moveTo;
+//                    if (firstMove && p1.win && i == 0) return p1.moveTo;
+//
+//                    //if ai has next winning move, inc value for column. break out
+//                    if (p1.win) {
+//                        myCols[p1FirstMove]++;
+//                        break sim;
+//                    }
+//                    //if no win, or board not full take turn, and get next player.
+//                    c4Copy.takeTurn();
+//                    c4Copy.nextPlayer();
+//
+//                    // checking for opponent win.
+//                    p2.moveTo = checkForWinner(c4Copy, p2, boardCopy);
+//
+//                    //as before ^ if board is full, break out.
+//                    if (p2.moveTo == -1) {
+//                        break sim;
+//                    }
+//                    if (firstMove && p2.win && i == 0) {
+////                        System.out.println("block at " + (p2.moveTo + 1) + "sim: "+i);
+//                        return p2.moveTo;
+//                    }
+//
+//                    //if opponent has a winning move. Decrease val for col. and break out.
+//                    if (p2.win) {
+//                        myCols[p1FirstMove]--;
+//                        break sim;
+//                    }
+//                    //if we got here, repeat.
+//                    c4Copy.takeTurn();
+//                    c4Copy.nextPlayer();
+//                    firstMove = false;
+//                }
+//            }
+//        }
+//
+//        //Find max value for next move. Greater the value, more wins it spanned out using this next move.
+//        int max = Integer.MIN_VALUE;
+//        int myBestMove = 0;
+//        for (int i = 0; i < myCols.length; i++) {
+//            if (myCols[i] > max && board.getLocationState(new Location(i, 0)) == LocationState.EMPTY) {
+//                max = myCols[i];
+//                myBestMove = i;
+//            }
+//        }
+//        //if myCols[bestMove] < 0
+//        return myBestMove;
+//    }
 
     //copy game board
     private Board copyBoard(Board board) {
