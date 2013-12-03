@@ -218,20 +218,17 @@ public class Connect4 {
             IPlayer player1 = new ComputerPlayer20057303(LocationState.RED);
             Board board = new Board(7, 6);
             Connect4 connect4 = new Connect4(player1, player2, board);
-//            boolean win = false;
             while (!connect4.isWin(board) && !connect4.isDraw()) {
                 while (!connect4.takeTurn() && !connect4.isDraw()) connect4.takeTurn();
-//                win = connect4.isWin(board);
                 connect4.nextPlayer();
                 if (player1 instanceof HumanPlayer || player2 instanceof HumanPlayer) {
                     System.out.println(connect4.getBoard().toString());          //////DRAW BOARD
                 }
             }
-//            System.out.println(connect4.board.toString());
+            System.out.println("red " + newAiWins + " yell " + oldWins);
             connect4.nextPlayer();
             if (connect4.currentPlayer.getPlayerState() == LocationState.RED) newAiWins++;
             if (connect4.currentPlayer.getPlayerState() == LocationState.YELLOW) oldWins++;
-//            System.out.println("red " + newAiWins + " yell " + oldWins);
         }
         System.out.println("new " + newAiWins + "\nold " + oldWins);
         System.out.println("time: " + s.elapsedTime());
