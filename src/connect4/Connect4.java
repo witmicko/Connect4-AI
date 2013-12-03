@@ -178,7 +178,6 @@ public class Connect4 {
         int oldWins = 0;
         Stopwatch s = new Stopwatch();
         for (int i = 0; i < 1000; i++) {
-            System.out.println();
             IPlayer player2 = new ComputerPlayer_1_random(LocationState.YELLOW);
 //            IPlayer player2 = new ComputerPlayer_WinTake_Block(LocationState.YELLOW);
             IPlayer player1 = new ComputerPlayer20057303(LocationState.RED);

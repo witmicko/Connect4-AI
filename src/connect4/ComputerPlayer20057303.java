@@ -1,20 +1,19 @@
 package connect4;
 
 import edu.princeton.cs.introcs.StdRandom;
-
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Example Computer Player.
  * CREATE YOUR OWN VERSION OF THIS, REPLACING THE NUMBER IN THE CLASS NAME
  * WITH YOUR STUDENT NUMBER.
  *
- * @author Frank
+ * @author Michal
  */
 public class ComputerPlayer20057303 extends IPlayer {
-    private int LIMIT = 250;
-    private boolean debug = true;
-    private int numTurns;
+    private final int LIMIT = 250;
+    private final boolean debug = true;
     private Player me, other;
 
     public ComputerPlayer20057303(LocationState playerState) {
@@ -24,28 +23,26 @@ public class ComputerPlayer20057303 extends IPlayer {
     @Override
     public int getMove(Board board) {
         setupGame();
-        int move = simulateGame(board);
-        return move;
+        return simulateGame(board);
     }
 
 
     private int checkForWinner(Connect4 c4, Player me, Board boardCpy) {
         me.win = false;
-
         for (int i = 0; i < boardCpy.getNoCols(); i++) {
-            if (boardCpy.getLocationState(new Location(i, 0)) == LocationState.EMPTY) me.moveTo = i;
+            LocationState thisState = boardCpy.getLocationState(new Location(i, 0));
+            if (thisState == LocationState.EMPTY) me.moveTo = i;
             else break;
             c4.takeTurn();
-            boolean isWin = c4.isWin(boardCpy);
-            if (isWin) {
-                if (boardCpy.getLocationState(new Location(i, 0)) == LocationState.EMPTY) {
+            if (c4.isWin(boardCpy)) {
+                if (thisState == LocationState.EMPTY) {
                     me.win = true;
                     return i;
                 }
             }
             undoMove(boardCpy, i);
         }
-        //if no winnerreturn random.
+        //if no winner return random empty location.
         return findRandomEmpty(boardCpy);
     }
 
@@ -57,56 +54,70 @@ public class ComputerPlayer20057303 extends IPlayer {
             }
         }
         if (cols.size() > 0) {
-            int rand = StdRandom.uniform(0, cols.size());
-            int mo = cols.get(rand);
-            return mo;
+            Random r = new Random();
+            int rand = r.nextInt(cols.size());
+            return cols.get(rand);
         } else return -1;
     }
 
 
-    public int simulateGame(Board board) {
+    private int simulateGame(Board board) {
         int p1FirstMove = 0;
+        //array of moves, index represents column, for each our win in sim. +1 else -1.
+        // Perhaps changing it around would make ai more defensive.
         int[] cols = new int[board.getNoCols()];
 
         for (int i = 0; i < LIMIT; i++) {
             Player p1 = new Player(me.getPlayerState());
             Player p2 = new Player(other.getPlayerState());
             boolean firstMove = true;
-            Board b = copyBoard(board);
+            Board boardCopy = copyBoard(board);
 
-            Connect4 c4Copy = new Connect4(p1, p2, b);
+            Connect4 c4Copy = new Connect4(p1, p2, boardCopy);
             sim:
             {
-                while (!c4Copy.isWin(b)) {
+                while (!c4Copy.isWin(boardCopy)) {
                     //Player 1 (me/ai)
-                    p1.moveTo = checkForWinner(c4Copy, p1, b);
+                    p1.moveTo = checkForWinner(c4Copy, p1, boardCopy);
+
+                    //check for winner uses method to find random EMPTY col, if no winning scenario.
+                    // -1 if board is full (due to lack of getter and setter for numTurns in main Connect4 class)
                     if (p1.moveTo == -1) break sim;
+
+                    //save first move. this will be used to calculate how many wins looses are for each starting location.
                     if (firstMove) {
                         p1FirstMove = p1.moveTo;
                         firstMove = false;
                     }
+                    //if ai has next winning move, inc value for column. break out
                     if (p1.win) {
                         cols[p1FirstMove]++;
                         break sim;
                     }
+                    //if no win, or board not full take turn, and get next player.
                     c4Copy.takeTurn();
                     c4Copy.nextPlayer();
-                    p2.moveTo = checkForWinner(c4Copy, p2, b);
+                    p2.moveTo = checkForWinner(c4Copy, p2, boardCopy);
+                    //as before ^ if board is full, break out.
                     if (p2.moveTo == -1) {
                         break sim;
                     }
 
+                    //if opponent has a winning move. Decrease val for col. and break out.
                     if (p2.win) {
                         cols[p1FirstMove]--;
                         break sim;
                     }
+                    //if we got here, repeat.
                     c4Copy.takeTurn();
                     c4Copy.nextPlayer();
                 }
             }
         }
+
+        //Find max value for next move. Greater the value, more wins it spanned out using this next move.
         int max = Integer.MIN_VALUE;
-        int bestMove = -1;
+        int bestMove=0;
         for (int i = 0; i < cols.length; i++) {
             if (cols[i] > max && board.getLocationState(new Location(i, 0)) == LocationState.EMPTY) {
                 max = cols[i];
@@ -116,8 +127,8 @@ public class ComputerPlayer20057303 extends IPlayer {
         return bestMove;
     }
 
-    //copy boardCpy and count number of turns
-    public Board copyBoard(Board board) {
+    //copy game board
+    private Board copyBoard(Board board) {
         Board copy = new Board(board.getNoCols(), board.getNoRows());
         for (int i = 0; i < board.getNoCols(); i++) {
             for (int j = 0; j < board.getNoRows(); j++) {
@@ -128,6 +139,7 @@ public class ComputerPlayer20057303 extends IPlayer {
         return copy;
     }
 
+    //undo move. Takes last disc from specified column
     private void undoMove(Board board, int col) {
         int i = 0;
         while (board.getLocationState(new Location(col, i)) == LocationState.EMPTY && i < board.getNoRows() - 1) {
@@ -140,7 +152,8 @@ public class ComputerPlayer20057303 extends IPlayer {
     }
 
 
-    public void setupGame() {
+    //Set up player states to duplicate main game.
+    private void setupGame() {
         this.me = new Player(this.getPlayerState());
         LocationState otherState = (me.getPlayerState() == LocationState.RED) ? LocationState.YELLOW : LocationState.RED;
         this.other = new Player(otherState);
@@ -151,13 +164,13 @@ public class ComputerPlayer20057303 extends IPlayer {
         if (this.debug) System.out.println(prompt);
     }
 
+    //Helping class to store dummy AI in our AI.
     private class Player extends IPlayer {
-        int moveTo;
-        boolean win;
+        int moveTo; // used to change val of next move.
+        boolean win; // check if player has a next winning move.
 
         public Player(LocationState playerState) {
             super(playerState);
-            moveTo = 0;
         }
 
         @Override
