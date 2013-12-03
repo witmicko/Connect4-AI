@@ -54,8 +54,6 @@ public class ComputerPlayer_WinTake_Block extends IPlayer {
             c4.takeTurn();
             boolean isWin = c4.isWin(board);
             if (isWin) {
-//                System.out.println("I can win. make a move at: " + (i + 1) + " to slaughter human");
-//                System.out.println("My Color is " + this.getPlayerState());
                 if (board.getLocationState(new Location(i, 0)) == LocationState.EMPTY) return i;
             }
             undoMove(board, i);
