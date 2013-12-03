@@ -28,6 +28,26 @@ public class ComputerPlayer20057303 extends IPlayer {
     }
 
 
+//    private int checkForWinner(Connect4 c4, Player me, Board boardCpy) {
+//        me.win = false;
+//        for (int i = 0; i < boardCpy.getNoCols(); i++) {
+//            LocationState thisState = boardCpy.getLocationState(new Location(i, 0));
+//            if (thisState == LocationState.EMPTY) me.moveTo = i;
+//            else break;
+//            c4.takeTurn();
+//            if (c4.isWin(boardCpy)) {
+//                if (thisState == LocationState.EMPTY) {
+//                    me.win = true;
+//                    return i;
+//                }
+//            }
+//            undoMove(boardCpy, i);
+//        }
+//        //if no winner return random empty location.
+//        return findRandomEmpty(boardCpy);
+//    }
+
+
     private int checkForWinner(Connect4 c4, Player me, Board boardCpy) {
         me.win = false;
         for (int i = 0; i < boardCpy.getNoCols(); i++) {
@@ -36,10 +56,8 @@ public class ComputerPlayer20057303 extends IPlayer {
             else break;
             c4.takeTurn();
             if (c4.isWin(boardCpy)) {
-                if (thisState == LocationState.EMPTY) {
                     me.win = true;
                     return i;
-                }
             }
             undoMove(boardCpy, i);
         }

@@ -40,133 +40,11 @@ public class Connect4 {
      * @return boolean to detect winner
      */
     public boolean isWin(Board board) {
-//        no setter or public access to numTurns breaks AI win checks
-//        if(this.numTurns < 7)return false;
-        return downUp(board) || upDown(board) || horizontalMatch(board) || verticalMatch(board);
+        //use extra class so we can also check for 3 or 2 in a line
+        //3 matching pairs = 4 in a row
+        return BoardChecker.matchFor(board,3);
     }
 
-
-    private boolean horizontalMatch(Board board) {
-//        for (int i = 0; i < board.getNoRows(); i++) {
-//            int count = 0;
-//            for (int j = 0; j < board.getNoCols() - 1; j++) {
-//                int x = j, y = i;
-//                count = compareStates(x, y, x + 1, y, board, count);
-//                if (count >= 3) return true;
-//
-//            }
-//        }
-//        return false;
-        for (int i = board.getNoRows() - 1; i >= 0; i--) {
-            int count = 0;
-            for (int j = 0; j < board.getNoCols() - 1; j++) {
-                int x = j, y = i;
-                count = compareStates(x, y, x + 1, y, board, count);
-                if (count >= 3) return true;
-
-            }
-        }
-        return false;
-    }//end horizontalMatch()
-
-    private boolean verticalMatch(Board board) {
-//        for (int i = 0; i < board.getNoCols(); i++) {
-//            int count = 0;
-//            for (int j = 0; j < board.getNoRows() - 1; j++) {
-//                int x = i;
-//                int y = j;
-//                count = compareStates(x, y, x, y + 1, board, count);
-//                if (count >= 3) return true;
-//
-//            }
-//        }
-//        return false;
-        for (int i = 0; i < board.getNoCols(); i++) {
-            int count = 0;
-            for (int j = board.getNoRows() - 1; j > 0; j--) {
-                int x = i;
-                int y = j;
-                count = compareStates(x, y, x, y - 1, board, count);
-                if (count >= 3) return true;
-            }
-        }
-        return false;
-    }//end verticalMatch()
-
-    private boolean upDown(Board board) {
-//      *
-//      **
-//      ***
-//      ****
-//      *****
-        for (int i = 0; i < board.getNoRows() - 3; i++) {
-            int count = 0;
-            for (int j = 0; j < (board.getNoRows() - 1 - i); j++) {
-                int x = j;
-                int y = j + i;
-                count = compareStates(x, y, x + 1, y + 1, board, count);
-                if (count >= 3) return true;
-
-            }
-        }
-//      *****
-//       ****
-//        ***
-//         **
-//          *
-        for (int i = 1; i < board.getNoCols() - 3; i++) {
-            int count = 0;
-            for (int j = 0; j < board.getNoRows() - i; j++) {
-                int x = j + i;
-                int y = j;
-                count = compareStates(x, y, x + 1, y + 1, board, count);
-                if (count >= 3) return true;
-
-            }
-        }
-        return false;
-    }// end upDown()
-
-    private boolean downUp(Board board) {
-//      *****
-//      ****
-//      ***
-//      **
-//      *
-        for (int i = 0; i < board.getNoRows() - 3; i++) {
-            int count = 0;
-            for (int j = 0; j < board.getNoRows() - 1 - i; j++) {
-                int x = j;
-                int y = (board.getNoRows() - 1) - i - j;
-                count = compareStates(x, y, x + 1, y - 1, board, count);
-                if (count >= 3) return true;
-            }
-        }
-//          *
-//         **
-//        ***
-//       ****
-//      *****
-        for (int i = 1; i < board.getNoCols() - 3; i++) {
-            int count = 0;
-            for (int j = 0; j < board.getNoRows() - i; j++) {
-                int x = j + i;
-                int y = board.getNoRows() - j - 1;
-                count = compareStates(x, y, x + 1, y - 1, board, count);
-                if (count >= 3) return true;
-            }
-        }
-        return false;
-    }//end downUp()
-
-    private int compareStates(int x, int y, int xNext, int yNext, Board board, int count) {
-        LocationState state = board.getLocationState(new Location(x, y));
-        if (state != LocationState.EMPTY) {
-            LocationState nextState = board.getLocationState(new Location(xNext, yNext));
-            if (state == nextState) return count + 1;
-        }
-        return 0;
-    }// end compareStates()
 
 
     /**
@@ -212,9 +90,9 @@ public class Connect4 {
         int newAiWins = 0;
         int oldWins = 0;
         Stopwatch s = new Stopwatch();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 1000; i++) {
 //            IPlayer player1 = new HumanPlayer(LocationState.YELLOW);
-            IPlayer player1 = new ComputerPlayer_WinTake_Block(LocationState.YELLOW);
+            IPlayer player1 = new ComputerPlayer_1_random(LocationState.YELLOW);
             IPlayer player2 = new ComputerPlayer20057303(LocationState.RED);
             Board board = new Board(7, 6);
             Connect4 connect4 = new Connect4(player1, player2, board);
