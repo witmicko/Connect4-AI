@@ -11,7 +11,6 @@ public class Connect4 {
     private Board board;
     private IPlayer currentPlayer;
     private int numTurns = 0;
-    private static int winChecks = 0;
 
     public Connect4(IPlayer human, IPlayer computer, Board board) {
         this.human = human;
@@ -32,7 +31,6 @@ public class Connect4 {
         } else {
             currentPlayer = human;
         }
-
     }
 
     /**
@@ -42,7 +40,6 @@ public class Connect4 {
      * @return boolean to detect winner
      */
     public boolean isWin(Board board) {
-        winChecks++;
 //        no setter or public access to numTurns breaks AI win checks
 //        if(this.numTurns < 7)return false;
         return downUp(board) || upDown(board) || horizontalMatch(board) || verticalMatch(board);
@@ -50,34 +47,58 @@ public class Connect4 {
 
 
     private boolean horizontalMatch(Board board) {
-        for (int i = 0; i < board.getNoRows(); i++) {
+//        for (int i = 0; i < board.getNoRows(); i++) {
+//            int count = 0;
+//            for (int j = 0; j < board.getNoCols() - 1; j++) {
+//                int x = j, y = i;
+//                count = compareStates(x, y, x + 1, y, board, count);
+//                if (count >= 3) return true;
+//
+//            }
+//        }
+//        return false;
+        for (int i = board.getNoRows() - 1; i >= 0; i--) {
             int count = 0;
             for (int j = 0; j < board.getNoCols() - 1; j++) {
-                int x = j;
-                int y = i;
+                int x = j, y = i;
                 count = compareStates(x, y, x + 1, y, board, count);
                 if (count >= 3) return true;
 
             }
         }
         return false;
-    }
+    }//end horizontalMatch()
 
     private boolean verticalMatch(Board board) {
+//        for (int i = 0; i < board.getNoCols(); i++) {
+//            int count = 0;
+//            for (int j = 0; j < board.getNoRows() - 1; j++) {
+//                int x = i;
+//                int y = j;
+//                count = compareStates(x, y, x, y + 1, board, count);
+//                if (count >= 3) return true;
+//
+//            }
+//        }
+//        return false;
         for (int i = 0; i < board.getNoCols(); i++) {
             int count = 0;
-            for (int j = 0; j < board.getNoRows() - 1; j++) {
+            for (int j = board.getNoRows() - 1; j > 0; j--) {
                 int x = i;
                 int y = j;
-                count = compareStates(x, y, x, y + 1, board, count);
+                count = compareStates(x, y, x, y - 1, board, count);
                 if (count >= 3) return true;
-
             }
         }
         return false;
-    }
+    }//end verticalMatch()
 
     private boolean upDown(Board board) {
+//      *
+//      **
+//      ***
+//      ****
+//      *****
         for (int i = 0; i < board.getNoRows() - 3; i++) {
             int count = 0;
             for (int j = 0; j < (board.getNoRows() - 1 - i); j++) {
@@ -88,6 +109,11 @@ public class Connect4 {
 
             }
         }
+//      *****
+//       ****
+//        ***
+//         **
+//          *
         for (int i = 1; i < board.getNoCols() - 3; i++) {
             int count = 0;
             for (int j = 0; j < board.getNoRows() - i; j++) {
@@ -99,9 +125,14 @@ public class Connect4 {
             }
         }
         return false;
-    }
+    }// end upDown()
 
     private boolean downUp(Board board) {
+//      *****
+//      ****
+//      ***
+//      **
+//      *
         for (int i = 0; i < board.getNoRows() - 3; i++) {
             int count = 0;
             for (int j = 0; j < board.getNoRows() - 1 - i; j++) {
@@ -111,6 +142,11 @@ public class Connect4 {
                 if (count >= 3) return true;
             }
         }
+//          *
+//         **
+//        ***
+//       ****
+//      *****
         for (int i = 1; i < board.getNoCols() - 3; i++) {
             int count = 0;
             for (int j = 0; j < board.getNoRows() - i; j++) {
@@ -121,7 +157,7 @@ public class Connect4 {
             }
         }
         return false;
-    }
+    }//end downUp()
 
     private int compareStates(int x, int y, int xNext, int yNext, Board board, int count) {
         LocationState state = board.getLocationState(new Location(x, y));
@@ -130,7 +166,7 @@ public class Connect4 {
             if (state == nextState) return count + 1;
         }
         return 0;
-    }
+    }// end compareStates()
 
 
     /**
@@ -152,7 +188,7 @@ public class Connect4 {
     public boolean takeTurn() {
         int col = currentPlayer.getMove(board);
 
-//        for (int i = 0; i < board.getNoRows(); i++) {
+//        for (int i = 0; i < board.getNoRows(); i++) {  // <- The Only line of code changed in original skeleton.
         for (int i = board.getNoRows() - 1; i >= 0; i--) {
             if (board.getLocationState(new Location(col, i)) == LocationState.EMPTY) {
                 board.setLocationState(new Location(col, i), currentPlayer.getPlayerState());
@@ -162,7 +198,7 @@ public class Connect4 {
         }
         System.out.println("wrong " + this.currentPlayer.getPlayerState());
         return false;
-    }
+    }//end takeTurn()
 
     public Board getBoard() {
         return board;
@@ -172,7 +208,6 @@ public class Connect4 {
      * @param args
      */
     public static void main(String[] args) {
-
 //        IPlayer player1 = new ComputerPlayer20057028(LocationState.YELLOW);
         int newAiWins = 0;
         int oldWins = 0;
@@ -194,12 +229,10 @@ public class Connect4 {
             }
 //            System.out.println(connect4.board.toString());
             connect4.nextPlayer();
-            winChecks = 0;
             if (connect4.currentPlayer.getPlayerState() == LocationState.RED) newAiWins++;
             if (connect4.currentPlayer.getPlayerState() == LocationState.YELLOW) oldWins++;
 //            System.out.println("red " + newAiWins + " yell " + oldWins);
         }
-        System.out.println(winChecks);
         System.out.println("new " + newAiWins + "\nold " + oldWins);
         System.out.println("time: " + s.elapsedTime());
     }
