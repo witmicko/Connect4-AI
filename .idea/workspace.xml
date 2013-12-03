@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3361a20d-8ea1-49c0-a50a-776590cc1813" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/connect4/ComputerPlayer20057303.java" afterPath="$PROJECT_DIR$/src/connect4/ComputerPlayer20057303.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/connect4/Connect4.java" afterPath="$PROJECT_DIR$/src/connect4/Connect4.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="connect4.iws" />
@@ -14,7 +13,7 @@
     <file path="$PROJECT_DIR$/../Assignment2/src/Point.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385548875322" ignored="false" />
     <file path="/Point.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385216505845" ignored="false" />
     <file path="/LineDetector.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385548338486" ignored="false" />
-    <file path="/Dummy.txt" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386051267578" ignored="false" />
+    <file path="/Dummy.txt" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386091616176" ignored="false" />
     <file path="$PROJECT_DIR$/../Assignment2/src/MakeImage.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1384870998566" ignored="false" />
     <file path="$PROJECT_DIR$/../Assignment2/text_files/inarow.txt" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1384871048772" ignored="false" />
     <file path="/GameRunner.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386000051867" ignored="false" />
@@ -43,7 +42,7 @@
     <file path="$PROJECT_DIR$/../temp/connect_4_java_files/Player.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386075984990" ignored="false" />
     <file path="/Player.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386017050638" ignored="false" />
     <file path="/ComputerPlayer_WinTake_Block.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386044724046" ignored="false" />
-    <file path="/ComputerPlayer20057303.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386091295586" ignored="false" />
+    <file path="/ComputerPlayer20057303.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386091807680" ignored="false" />
     <file path="$PROJECT_DIR$/../temp/SmartConnectFour-v1.0/Run.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386077093456" ignored="false" />
     <file path="$PROJECT_DIR$/../temp/Connect4/source/Main.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386077871915" ignored="false" />
     <file path="$PROJECT_DIR$/../temp/Connect4/source/AI/Controller/MiniMax/Tree.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386078176467" ignored="false" />
@@ -155,7 +154,7 @@
       <file leaf-file-name="ComputerPlayer20057303.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/connect4/ComputerPlayer20057303.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="112" column="0" selection-start="4054" selection-end="4054" vertical-scroll-proportion="0.8606557">
+            <state line="22" column="0" selection-start="536" selection-end="536" vertical-scroll-proportion="0.6967213">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -772,7 +771,11 @@
       <created>1386051271792</created>
       <updated>1386051271792</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="mainly done ai, tests and fine tunning.&#10;ist the greatest one though.">
+      <created>1386091653981</created>
+      <updated>1386091653981</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -869,7 +872,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="got rid off GameRunner class. use main() in Connect4 instead." />
+    <option name="LAST_COMMIT_MESSAGE" value="mainly done ai, tests and fine tunning.&#10;ist the greatest one though." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -905,6 +908,7 @@
     <MESSAGE value="Refactoring." />
     <MESSAGE value="more refactoring, testing if starting at the bottom of the board is any faster." />
     <MESSAGE value="got rid off GameRunner class. use main() in Connect4 instead." />
+    <MESSAGE value="mainly done ai, tests and fine tunning.&#10;ist the greatest one though." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1010,7 +1014,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/connect4/ComputerPlayer20057303.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="0" selection-start="4054" selection-end="4054" vertical-scroll-proportion="0.8606557">
+        <state line="22" column="0" selection-start="536" selection-end="536" vertical-scroll-proportion="0.6967213">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

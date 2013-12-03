@@ -88,7 +88,7 @@ public class ComputerPlayer20057303 extends IPlayer {
 
                     //save first move. this will be used to calculate how many wins looses are for each starting location.
                     if (firstMove) p1FirstMove = p1.moveTo;
-//                    if (firstMove && p1.win) return p1.moveTo;
+                    if (firstMove && p1.win && i==0) return p1.moveTo;
 
                     //if ai has next winning move, inc value for column. break out
                     if (p1.win) {
@@ -106,8 +106,8 @@ public class ComputerPlayer20057303 extends IPlayer {
                     if (p2.moveTo == -1) {
                         break sim;
                     }
-                    if (firstMove && p2.win) {
-//                        System.out.println("block at " + (p2.moveTo + 1));
+                    if (firstMove && p2.win && i==0) {
+//                        System.out.println("block at " + (p2.moveTo + 1) + "sim: "+i);
                         return p2.moveTo;
                     }
 
