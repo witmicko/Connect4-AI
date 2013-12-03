@@ -1,5 +1,8 @@
 package connect4;
 
+import edu.princeton.cs.introcs.StdRandom;
+
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -16,7 +19,6 @@ public class ComputerPlayer_WinTake_Block extends IPlayer {
 
     public ComputerPlayer_WinTake_Block(LocationState playerState) {
         super(playerState);
-
     }
 
     @Override
@@ -26,31 +28,46 @@ public class ComputerPlayer_WinTake_Block extends IPlayer {
 
         int moveTo = checkForWinner(this.board);
 
-        int x = (moveTo < 0) ? (int) (Math.random() * 7) : moveTo;
-        //TODO
-        return x;
+        if(moveTo<0)moveTo = findRandomEmpty(this.board);
+        return moveTo;
+    }
+    private int findRandomEmpty(Board boardCpy) {
+        ArrayList<Integer> cols = new ArrayList<>();
+        for (int i = 0; i < boardCpy.getNoCols(); i++) {
+            if (boardCpy.getLocationState(new Location(i, 0)) == LocationState.EMPTY) {
+                cols.add(i);
+            }
+        }
+        if (cols.size() > 0){
+            int rand = StdRandom.uniform(0, cols.size());
+            int mo = cols.get(rand);
+            return mo;
+        }
+        else return 0;
     }
 
 
     private int checkForWinner(Board board) {
         for (int i = 0; i < board.getNoCols(); i++) {
-            this.me.moveTo = i;
+            if (board.getLocationState(new Location(i, 0)) == LocationState.EMPTY)this.me.moveTo = i;
+            else break;
             c4.takeTurn();
             boolean isWin = c4.isWin(board);
             if (isWin) {
-                System.out.println("I can win. make a move at: " + (i + 1) + " to slaughter human");
-                System.out.println("My Color is " + this.getPlayerState());
+//                System.out.println("I can win. make a move at: " + (i + 1) + " to slaughter human");
+//                System.out.println("My Color is " + this.getPlayerState());
                 if (board.getLocationState(new Location(i, 0)) == LocationState.EMPTY) return i;
             }
             undoMove(board, i);
         }
         c4.nextPlayer();
         for (int i = 0; i < board.getNoCols(); i++) {
-            this.other.moveTo = i;
+            if (board.getLocationState(new Location(i, 0)) == LocationState.EMPTY)this.other.moveTo = i;
+            else break;
             c4.takeTurn();
             boolean isWin = c4.isWin(board);
             if (isWin) {
-                System.out.println("Master can win. Make a move at: " + (i + 1) + " to block");
+//                System.out.println("Master can win. Make a move at: " + (i + 1) + " to block");
                 if (board.getLocationState(new Location(i, 0)) == LocationState.EMPTY) return i;
             }
             undoMove(board, i);

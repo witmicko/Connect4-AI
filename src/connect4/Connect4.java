@@ -1,5 +1,7 @@
 package connect4;
 
+import edu.princeton.cs.introcs.Stopwatch;
+
 /**
  * Class to manage the connect 4 game
  */
@@ -9,6 +11,7 @@ public class Connect4 {
     private Board board;
     private IPlayer currentPlayer;
     private int numTurns = 0;
+    private static int winChecks = 0;
 
     public Connect4(IPlayer human, IPlayer computer, Board board) {
         this.human = human;
@@ -39,6 +42,7 @@ public class Connect4 {
      * @return boolean to detect winner
      */
     public boolean isWin(Board board) {
+        winChecks++;
 //        no setter or public access to numTurns breaks AI win checks
 //        if(this.numTurns < 7)return false;
         return downUp(board) || upDown(board) || horizontalMatch(board) || verticalMatch(board);
@@ -156,6 +160,7 @@ public class Connect4 {
                 return true;
             }
         }
+        System.out.println("wrong "+this.currentPlayer.getPlayerState());
         return false;
     }
 
@@ -167,7 +172,38 @@ public class Connect4 {
      * @param args
      */
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
+
+//        IPlayer player1 = new ComputerPlayer20057028(LocationState.YELLOW);
+        int newAiWins = 0;
+        int oldWins = 0;
+        Stopwatch s = new Stopwatch();
+        for (int i = 0; i < 100; i++) {
+            IPlayer player2 = new HumanPlayer(LocationState.YELLOW);
+            IPlayer player1 = new ComputerPlayer20057303(LocationState.RED);
+            Board board = new Board(7, 6);
+            Connect4 connect4 = new Connect4(player1, player2, board);
+            boolean win = false;
+            while (!win && !connect4.isDraw()) {
+                while (!connect4.takeTurn() && !connect4.isDraw()) {
+                    System.out.println("wrongmove by " + connect4.currentPlayer.getPlayerState());
+                    connect4.takeTurn();
+                }
+                win = connect4.isWin(board);
+                connect4.nextPlayer();
+                System.out.println(connect4.getBoard().toString());          //////DRAW BOARD
+            }
+            connect4.nextPlayer();
+//            System.out.println(connect4.getBoard().toString());
+//            System.out.println(connect4.currentPlayer.getPlayerState() + " " + winChecks);
+            winChecks = 0;
+            if (connect4.currentPlayer.getPlayerState() == LocationState.RED) newAiWins++;
+            if (connect4.currentPlayer.getPlayerState() == LocationState.YELLOW) oldWins++;
+            System.out.println("red " + newAiWins + " yell " + oldWins);
+        }
+        System.out.println(winChecks);
+        System.out.println("new " + newAiWins + "\nold " + oldWins);
+        System.out.println("time: "+s.elapsedTime());
+
     }
 
 

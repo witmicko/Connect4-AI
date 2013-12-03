@@ -1,8 +1,6 @@
 package connect4;
 
 
-import java.util.NoSuchElementException;
-
 /**
  * Created with IntelliJ IDEA.
  * User: michal
@@ -13,7 +11,7 @@ import java.util.NoSuchElementException;
 public class GameRunner {
     public static void main(String[] args) {
 //        IPlayer player1 = new ComputerPlayer_WinTake_Block(LocationState.RED);
-        IPlayer player1 = new Minimax(LocationState.YELLOW);
+        IPlayer player1 = new ComputerPlayer20057303(LocationState.YELLOW);
         IPlayer player2 = new HumanPlayer(LocationState.RED);
         Board board = new Board(7, 6);
         Connect4 connect4 = new Connect4(player1, player2, board);
@@ -25,6 +23,7 @@ public class GameRunner {
                 connect4.takeTurn() ;
             }
             connect4.nextPlayer();
+
             System.out.println(connect4.getBoard().toString());
             win = connect4.isWin(board);
         }
