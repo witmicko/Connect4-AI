@@ -40,9 +40,8 @@ public class Connect4 {
      * @return boolean to detect winner
      */
     public boolean isWin(Board board) {
-        //use extra class so we can also check for 3 or 2 in a line
-        //3 matching pairs = 4 in a row
-        return BoardChecker.matchFor(currentPlayer.getPlayerState(), board, 3,"++++");
+        boolean win = BoardChecker.matchFor(currentPlayer.getPlayerState(), board, "++++");
+        return win;
     }
 
 
@@ -73,7 +72,7 @@ public class Connect4 {
                 return true;
             }
         }
-        System.out.println("wrong " + this.currentPlayer.getPlayerState());
+        System.out.println("wrong: "+currentPlayer.getPlayerState());
         return false;
     }//end takeTurn()
 
@@ -91,21 +90,23 @@ public class Connect4 {
         Stopwatch s = new Stopwatch();
         for (int i = 0; i < 100; i++) {
 //            IPlayer player1 = new HumanPlayer(LocationState.YELLOW);
-            IPlayer player1 = new ComputerPlayer_1_random(LocationState.YELLOW);
+            IPlayer player1 = new ComputerPlayer_WinTake_Block(LocationState.YELLOW);
             IPlayer player2 = new ComputerPlayer20057303(LocationState.RED);
             Board board = new Board(7, 6);
             Connect4 connect4 = new Connect4(player1, player2, board);
-            while (!connect4.isWin(board) && !connect4.isDraw()) {
-                while (!connect4.takeTurn() && !connect4.isDraw()) connect4.takeTurn();
-                connect4.nextPlayer();
+            while (true) {
+                while (!connect4.takeTurn() && !connect4.isDraw()){
+                    connect4.takeTurn();
+                }
                 if (player1 instanceof HumanPlayer || player2 instanceof HumanPlayer) {
                     System.out.println(connect4.getBoard().toString());          //////DRAW BOARD
                 }
+                if(connect4.isWin(board) || connect4.isDraw())break;
+                connect4.nextPlayer();
             }
-            connect4.nextPlayer();
-            System.out.print("." + ((i % 100 == 0) ? "\n" : ""));
+//            System.out.print("." + ((i % 100 == 0) ? "\n" : ""));
 //            System.out.print("." );
-//            System.out.println(connect4.currentPlayer.getPlayerState());
+            System.out.println(connect4.currentPlayer.getPlayerState());
 //            System.out.println(connect4.currentPlayer.getPlayerState()+"\nred " + newAiWins + " yell " + oldWins);
             if (connect4.currentPlayer.getPlayerState() == LocationState.RED) newAiWins++;
             if (connect4.currentPlayer.getPlayerState() == LocationState.YELLOW) oldWins++;

@@ -38,11 +38,9 @@ public class Connect4TestMine {
     }
 
 
-//    @Test
+    @Test
     public void testIsVerticalWin() throws Exception {
         c4.nextPlayer();
-
-
         board.setLocationState(new Location(0, 1), LocationState.RED);
         board.setLocationState(new Location(0, 2), LocationState.RED);
         board.setLocationState(new Location(0, 3), LocationState.RED);
@@ -153,7 +151,7 @@ public class Connect4TestMine {
 
     }
 
-//    @Test
+    @Test
     public void testUpDownWin() throws Exception {
         c4.nextPlayer();
         board.setLocationState(new Location(0, 0), LocationState.RED);
@@ -249,6 +247,7 @@ public class Connect4TestMine {
 
     @Test
     public void testDownUpWin() throws Exception{
+        c4.nextPlayer();
         board.setLocationState(new Location(0, 5), LocationState.RED);
         board.setLocationState(new Location(1, 4), LocationState.RED);
         board.setLocationState(new Location(2, 3), LocationState.RED);
@@ -310,6 +309,15 @@ public class Connect4TestMine {
         board.clear();
 
 
+    }
+    @Test
+    public void patternTest()throws Exception{
+        LocationState RED = LocationState.RED;
+        board.setLocationState(new Location(1,0),RED);
+        board.setLocationState(new Location(2,0),RED);
+        board.setLocationState(new Location(3,0),RED);
+        board.setLocationState(new Location(4,0),RED);
+        boolean check = BoardChecker.matchFor(RED,board,"++++");
     }
 
     public void testTakeTurn() throws Exception {

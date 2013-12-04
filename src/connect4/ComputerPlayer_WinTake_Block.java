@@ -52,8 +52,7 @@ public class ComputerPlayer_WinTake_Block extends IPlayer {
             if (board.getLocationState(new Location(i, 0)) == LocationState.EMPTY)this.me.moveTo = i;
             else break;
             c4.takeTurn();
-            boolean isWin = c4.isWin(board);
-            if (isWin) {
+            if (c4.isWin(board)) {
                 if (board.getLocationState(new Location(i, 0)) == LocationState.EMPTY) return i;
             }
             undoMove(board, i);
