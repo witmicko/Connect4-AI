@@ -14,7 +14,7 @@ import java.util.Random;
 // */ he was giving 1 for one in a row, 5 for 2 and 10 for 3
 
 public class ComputerPlayer20057303 extends IPlayer {
-    private final int LIMIT = 2000;
+    private final int LIMIT = 1000;
     private final boolean debug = true;
     private static int ROWS = 0;
     private static int COLS = 0;
@@ -35,13 +35,14 @@ public class ComputerPlayer20057303 extends IPlayer {
 //        Connect4 c4Copy = new Connect4(p1, p2, boardCopy);
 //        int[] scores = checkForWinner(c4Copy, p1, boardCopy);
 //        int move = getMax(scores, boardCopy);
-        int move = simGame(board);
+        int move = simulateGame(board);
         return move;
     }
 
-    private int[] checkForWinner(Connect4 c4, Player me, Board boardCpy) {
-        LocationState state  = me.getPlayerState();
+    private int[] checkForWinnerBool(Connect4 c4, Player me, Board boardCpy) {
+        LocationState state = me.getPlayerState();
         int[] scores = new int[COLS];
+        byte val = 0;
         getScore:
         {
             for (int i = 0; i < COLS; i++) {
@@ -57,33 +58,95 @@ public class ComputerPlayer20057303 extends IPlayer {
                     // ~ NOT AVAILABLE (Suspended on board / EMPTY field underneath)
 
                     //win
-                    if (BoardChecker.localPatterMatch(state,boardCpy,"++++",i)) {
+                    if (BoardChecker.localPatterMatchBol(state, boardCpy, "++++", i)) {
                         me.win = true;
-                        score += 1000000;
+                        score += 20000000;
+                        scores[i] = score;
+                        return scores;
                     }
                     //three in a row
-                    if (BoardChecker.localPatterMatch(state,boardCpy,"_+++",i)) score+=1000;
-                    if (BoardChecker.localPatterMatch(state,boardCpy,"+_++",i)) score+=1000;
-                    if (BoardChecker.localPatterMatch(state,boardCpy,"++-+",i)) score+=1000;
-                    if (BoardChecker.localPatterMatch(state,boardCpy,"+++-",i)) score+=1000;
+                    if(BoardChecker.localPatterMatchBol(state, boardCpy, "_+++", i))score += 750;
+                    if(BoardChecker.localPatterMatchBol(state, boardCpy, "+_++", i))score += 750;
+                    if(BoardChecker.localPatterMatchBol(state, boardCpy, "_+++_", i))score += 750;
+//
+////
+//                    //block win
+                    if(BoardChecker.localPatterMatchBol(state, boardCpy, "+---", i))score += 2500;
+                    if(BoardChecker.localPatterMatchBol(state, boardCpy, "-+--", i))score += 2500;
+//
+//                    //block pre win
+                    if(BoardChecker.localPatterMatchBol(state, boardCpy, "_-+-_", i))score += 2400;
+                    if(BoardChecker.localPatterMatchBol(state, boardCpy, "_-+-", i))score += 2400;
+//
+//                    //can we get 2 in a row?
+//                    val = BoardChecker.localPatterMatch(state, boardCpy, "++__", i);
+//                    score += (val > 8) ? 250 * val : 0;
+//                    val = BoardChecker.localPatterMatch(state, boardCpy, "_++_", i);
+//                    score += (val > 8) ? 250 * val : 0;
+//                    val = BoardChecker.localPatterMatch(state, boardCpy, "+_+_", i);
+//                    score += (val > 8) ? 250 * val : 0;
 
-                    //block win
-                    if (BoardChecker.localPatterMatch(state,boardCpy,"+---",i)) score+=2000;
-                    if (BoardChecker.localPatterMatch(state,boardCpy,"-+--",i)) score+=2000;
-                    if (BoardChecker.localPatterMatch(state,boardCpy,"--+-",i)) score+=2000;
-                    if (BoardChecker.localPatterMatch(state,boardCpy,"---+",i)) score+=2000;
+                    scores[i] = score;
+                    undoMove(boardCpy, i);
+                }
+            }
+        }
+        return scores;
+    }
 
-                    //block pre win
-                    if (BoardChecker.localPatterMatch(state,boardCpy,"_-+-_",i)) score+=500;
-//                    if (BoardChecker.localPatterMatch(state,boardCpy,"_-+-_",i)) score+=500;
-//                    if (BoardChecker.localPatterMatch(state,boardCpy,"_-+-_",i)) score+=500;
-//                    if (BoardChecker.localPatterMatch(state,boardCpy,"_-+-_",i)) score+=500;
+    private int[] checkForWinner(Connect4 c4, Player me, Board boardCpy) {
+        LocationState state = me.getPlayerState();
+        int[] scores = new int[COLS];
+        byte val = 0;
+        getScore:
+        {
+            for (int i = 0; i < COLS; i++) {
+                int score = 0;
+                if (boardCpy.getLocationState(new Location(i, 0)) == LocationState.EMPTY) {
+                    me.moveTo = i;
+                    c4.takeTurn();
 
-                    //can we get 2 in a row?
-                    if (BoardChecker.localPatterMatch(state,boardCpy,"++__",i)) score+=250;
-                    if (BoardChecker.localPatterMatch(state,boardCpy,"_++_",i)) score+=250;
-                    if (BoardChecker.localPatterMatch(state,boardCpy,"__++",i)) score+=250;
+                    //PATTERN MATCHING:
+                    // + IS AN OUR STATE (Player me)
+                    // - OPPONENT
+                    // _ EMPTY
+                    // ~ NOT AVAILABLE (Suspended on board / EMPTY field underneath)
 
+                    //win
+                    if (BoardChecker.localPatterMatch(state, boardCpy, "++++", i) > 8) {
+                        me.win = true;
+                        score += 20000000;
+                        scores[i] = score;
+                        return scores;
+                    }
+                    //three in a row
+                    val = BoardChecker.localPatterMatch(state, boardCpy, "_+++", i);
+                    score += (val > 8) ? 750 : 0;
+                    val = BoardChecker.localPatterMatch(state, boardCpy, "+_++", i);
+                    score += (val > 8) ? 750 : 0;
+                    val = BoardChecker.localPatterMatch(state, boardCpy, "_+++_", i);
+                    score += (val > 8) ? 750 : 0;
+//
+////
+//                    //block win
+                    val = BoardChecker.localPatterMatch(state, boardCpy, "+---", i);
+                    score += (val > 8) ? 2400 : 0;
+                    val = BoardChecker.localPatterMatch(state, boardCpy, "-+--", i);
+                    score += (val > 8) ? 2400 : 0;
+//
+//                    //block pre win
+                    val = BoardChecker.localPatterMatch(state, boardCpy, "_-+-_", i);
+                    score += (val > 8) ? 2250 : 0;
+                    val = BoardChecker.localPatterMatch(state, boardCpy, "_-+-", i);
+                    score += (val > 8) ? 2250 : 0;
+//
+//                    //can we get 2 in a row?
+//                    val = BoardChecker.localPatterMatch(state, boardCpy, "++__", i);
+//                    score += (val > 8) ? 250 * val : 0;
+//                    val = BoardChecker.localPatterMatch(state, boardCpy, "_++_", i);
+//                    score += (val > 8) ? 250 * val : 0;
+//                    val = BoardChecker.localPatterMatch(state, boardCpy, "+_+_", i);
+//                    score += (val > 8) ? 250 * val : 0;
 
                     scores[i] = score;
                     undoMove(boardCpy, i);
@@ -124,7 +187,8 @@ public class ComputerPlayer20057303 extends IPlayer {
             {
                 while (true) {
                     //Player 1 (me/ai)
-                    int[] scores = checkForWinner(c4Copy, p1, boardCopy);
+//                    int[] scores = checkForWinner(c4Copy, p1, boardCopy);
+                    int[] scores = checkForWinnerBool(c4Copy, p1, boardCopy);
                     p1.moveTo = getMax(scores, boardCopy);
                     //check for winner uses method to find random EMPTY col, if no winning scenario.
                     // -1 if board is full (due to lack of getter and setter for numTurns in main Connect4 class)
@@ -146,7 +210,8 @@ public class ComputerPlayer20057303 extends IPlayer {
                     c4Copy.nextPlayer();
 
                     // checking for opponent win.
-                    scores = checkForWinner(c4Copy, p2, boardCopy);
+//                    scores = checkForWinner(c4Copy, p2, boardCopy);
+                    scores = checkForWinnerBool(c4Copy, p2, boardCopy);
                     p2.moveTo = getMax(scores, boardCopy);
 
                     //as before ^ if board is full, break out.
@@ -175,7 +240,7 @@ public class ComputerPlayer20057303 extends IPlayer {
     private int simGame(Board board) {
         int[] myCols = new int[COLS];
 //        boolean firstMove = true;
-        for (int i = 0; i < 500; i++) {
+        for (int i = 0; i < 50; i++) {
             Board boardCopy = copyBoard(board);
             Player p1 = new Player(me.getPlayerState());
             Player p2 = new Player(other.getPlayerState());
@@ -193,7 +258,10 @@ public class ComputerPlayer20057303 extends IPlayer {
                     firstMove = p1.moveTo;
                     first = false;
                 }
-                if (p1.moveTo == -1) break;
+                if (p1.moveTo == -1) {
+                    myCols[firstMove]--;
+                    break;
+                }
                 if (p1.win) {
                     myCols[firstMove]++;
                     break;
@@ -203,7 +271,10 @@ public class ComputerPlayer20057303 extends IPlayer {
 
                 scores = checkForWinner(c4Copy, p2, boardCopy);
                 p2.moveTo = getMax(scores, boardCopy);
-                if (p2.moveTo == -1) break;
+                if (p2.moveTo == -1) {
+                    myCols[firstMove]--;
+                    break;
+                }
                 if (p2.win) {
                     myCols[firstMove]--;
                     break;
@@ -218,16 +289,17 @@ public class ComputerPlayer20057303 extends IPlayer {
     }
 
     private int getMax(int[] candidateMoves, Board board) {
-        if (candidateMoves.length == 0) return -1;
+        int myBestMove = -1;//(candidateMoves.length > 0) ? 0 : findRandomEmpty(board);
 
         int max = Integer.MIN_VALUE;
-        int myBestMove = 0;
         for (int i = 0; i < candidateMoves.length; i++) {
             if (candidateMoves[i] >= max && board.getLocationState(new Location(i, 0)) == LocationState.EMPTY) {
                 max = candidateMoves[i];
                 myBestMove = i;
             }
         }
+        if (myBestMove == -1) return -1;
+
         ArrayList<Integer> maxes = new ArrayList<>();
         for (int i = 0; i < candidateMoves.length; i++) {
             if (candidateMoves[i] == max) maxes.add(i);
@@ -240,7 +312,6 @@ public class ComputerPlayer20057303 extends IPlayer {
         if (candidateMoves[myBestMove] == 0) myBestMove = findRandomEmpty(board);
         return myBestMove;
     }//end getMax()
-
 
 
     //copy game board

@@ -120,8 +120,9 @@ public class BoardChecker {
         return true;
     }
 
-    public static boolean localPatterMatch(LocationState state, Board board, String pattern, int col) {
+    public static byte localPatterMatch(LocationState state, Board board, String pattern, int col) {
         setup(state, board, pattern);
+        byte vals = 0;
         int row = findLandingRow(col, board);
 
         //horizontally
@@ -130,7 +131,7 @@ public class BoardChecker {
             int k = Math.abs(col - i);
             if (k < 4) str.append(compareStates(i, row));
         }
-        if (str.indexOf(PATTERN) > -1) return true;
+        if (str.indexOf(PATTERN) > -1  || str.indexOf(PATTERN_REV) > -1) vals += 4;
 
         //verticaly
         str.setLength(0);
@@ -138,7 +139,7 @@ public class BoardChecker {
             int k = Math.abs(row - i);
             if (k < 4) str.append(compareStates(col, i));
         }
-        if(str.indexOf(PATTERN)>-1)return true;
+        if(str.indexOf(PATTERN)>-1  || str.indexOf(PATTERN_REV) > -1) vals += 2;
 
         //diagonal down up /
         str.setLength(0);
@@ -153,7 +154,7 @@ public class BoardChecker {
         }
         StringBuffer s = new StringBuffer(str2).reverse();
         s.append(str);
-        if(s.indexOf(PATTERN)>-1)return true;
+        if(s.indexOf(PATTERN)>-1  || s.indexOf(PATTERN_REV) > -1) vals += 1;
 
         //__________________________________________
         //____________________________________
@@ -170,7 +171,65 @@ public class BoardChecker {
         }
         s = new StringBuffer(str2).reverse();
         s.append(str);
-        if(s.indexOf(PATTERN)>-1)return true;
+        if(s.indexOf(PATTERN)>-1  || s.indexOf(PATTERN_REV) > -1) vals+=1;
+
+
+        if(vals > 0) vals+=8;
+//        vals +=(vals>0)? 8:0;
+        return vals;
+    }
+
+    public static boolean localPatterMatchBol(LocationState state, Board board, String pattern, int col) {
+        setup(state, board, pattern);
+        int row = findLandingRow(col, board);
+
+        //horizontally
+        str.setLength(0);
+        for (int i = 0; i < board.getNoCols(); i++) {
+            int k = Math.abs(col - i);
+            if (k < 4) str.append(compareStates(i, row));
+        }
+        if (str.indexOf(PATTERN) > -1  || str.indexOf(PATTERN_REV) > -1) return true;
+
+        //verticaly
+        str.setLength(0);
+        for (int i = 0; i < board.getNoRows(); i++) {
+            int k = Math.abs(row - i);
+            if (k < 4) str.append(compareStates(col, i));
+        }
+        if(str.indexOf(PATTERN)>-1  || str.indexOf(PATTERN_REV) > -1) return true;
+
+        //diagonal down up /
+        str.setLength(0);
+        for (int i = col, j = row; i < COLS && j >= 0; i++, j--) {
+            int k = Math.abs(col - i);
+            if (k < 4) str.append(compareStates(i, j));
+        }
+        StringBuffer str2 = new StringBuffer("");
+        for (int i = col - 1, j = row + 1; i >= 0 && j < ROWS; i--, j++) {
+            int k = Math.abs(col - i);
+            if (k < 4) str2.append(compareStates(i, j));
+        }
+        StringBuffer s = new StringBuffer(str2).reverse();
+        s.append(str);
+        if(s.indexOf(PATTERN)>-1  || s.indexOf(PATTERN_REV) > -1) return true;
+
+        //__________________________________________
+        //____________________________________
+        //diagonal up down
+        str.setLength(0);
+        for (int i = col, j = row; i < COLS && j < ROWS; i++, j++) {
+            int k = Math.abs(col - i);
+            if (k < 4) str.append(compareStates(i, j));
+        }
+        str2.setLength(0);
+        for (int i = col - 1, j = row - 1; i >= 0 && j >= 0; i--, j--) {
+            int k = Math.abs(col - i);
+            if (k < 4) str2.append(compareStates(i, j));
+        }
+        s = new StringBuffer(str2).reverse();
+        s.append(str);
+        if(s.indexOf(PATTERN)>-1  || s.indexOf(PATTERN_REV) > -1) return true;
 
 
         return false;

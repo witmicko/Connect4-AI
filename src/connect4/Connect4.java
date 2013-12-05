@@ -64,7 +64,6 @@ public class Connect4 {
     public boolean takeTurn() {
         int col = currentPlayer.getMove(board);
 
-
 //        for (int i = 0; i < board.getNoRows(); i++) {  // <- The Only line of code changed in original skeleton.
         for (int i = board.getNoRows() - 1; i >= 0; i--) {
             if (board.getLocationState(new Location(col, i)) == LocationState.EMPTY) {
@@ -74,7 +73,7 @@ public class Connect4 {
                 return true;
             }
         }
-        System.out.println("wrong: " + currentPlayer.getPlayerState());
+//        System.out.println("wrong: " + currentPlayer.getPlayerState());
         return false;
     }//end takeTurn()
 
@@ -88,35 +87,45 @@ public class Connect4 {
     public static void main(String[] args) {
 //        IPlayer player1 = new ComputerPlayer20057028(LocationState.YELLOW);
         int newAiWins = 0;
+        double newAiTime = 0;
         int oldWins = 0;
+        double oldAiTime = 0;
         Stopwatch s = new Stopwatch();
         for (int i = 0; i < 100; i++) {
 //            IPlayer player1 = new HumanPlayer(LocationState.YELLOW);
-            IPlayer player1 = new ComputerPlayer20057303(LocationState.RED);
-            IPlayer player2 = new HumanPlayer(LocationState.YELLOW);
+            IPlayer player1 = new OLD_ComputerPlayer20057303(LocationState.YELLOW);
+            IPlayer player2 = new ComputerPlayer20057303(LocationState.RED);
             Board board = new Board(7, 6);
             Connect4 connect4 = new Connect4(player1, player2, board);
             int turn = 0;
             while (true) {
+                Stopwatch stopwatch = new Stopwatch();
                 while (!connect4.takeTurn() && !connect4.isDraw()) {
                     connect4.takeTurn();
                     System.out.print(turn + "_" + ((turn % 10 == 0) ? "\n" : ""));
                     turn++;
                 }
-                if ((player1 instanceof HumanPlayer || player2 instanceof HumanPlayer) &&
-                        connect4.currentPlayer instanceof HumanPlayer) {
+                if ((player1 instanceof HumanPlayer || player2 instanceof HumanPlayer)) {
                     System.out.println(connect4.getBoard().toString());          //////DRAW BOARD
                 }
+
                 if (connect4.isWin(board) || connect4.isDraw()) break;
+
+                if (connect4.currentPlayer.getPlayerState() == LocationState.RED) newAiTime += stopwatch.elapsedTime();
+                if (connect4.currentPlayer.getPlayerState() == LocationState.YELLOW)
+                    oldAiTime += stopwatch.elapsedTime();
+
+//                System.out.println("Player: " + connect4.currentPlayer.getPlayerState() + " took: " + stopwatch.elapsedTime() + "s");
                 connect4.nextPlayer();
             }
+//            System.out.println(connect4.getBoard().toString());
             System.out.print("." + ((i % 100 == 0) ? "\n" : ""));
             System.out.println(connect4.currentPlayer.getPlayerState());
-//            System.out.println(connect4.currentPlayer.getPlayerState()+"\nred " + newAiWins + " yell " + oldWins);
+//            System.out.println(connect4.curmrentPlayer.getPlayerState()+"\nred " + newAiWins + " yell " + oldWins);
             if (connect4.currentPlayer.getPlayerState() == LocationState.RED) newAiWins++;
             if (connect4.currentPlayer.getPlayerState() == LocationState.YELLOW) oldWins++;
         }
-        System.out.println("\nnew " + newAiWins + "\nold " + oldWins);
-        System.out.println("time: " + s.elapsedTime());
+        System.out.println("\nnew " + newAiWins + "\nold " + oldWins + "\nnew time: " + newAiTime + "\nold time: " + oldAiTime);
+        System.out.println("time: " + s.elapsedTime() + " is it ok? " + (newAiTime + oldAiTime));
     }
 }
