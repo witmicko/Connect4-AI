@@ -5,20 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3361a20d-8ea1-49c0-a50a-776590cc1813" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/connect4/Board.java" afterPath="$PROJECT_DIR$/src/connect4/Board.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/connect4/BoardChecker.java" afterPath="$PROJECT_DIR$/src/connect4/BoardChecker.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/connect4/ComputerPlayer20057303.java" afterPath="$PROJECT_DIR$/src/connect4/ComputerPlayer20057303.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/connect4/ComputerPlayer_1_random.java" afterPath="$PROJECT_DIR$/src/connect4/ComputerPlayer_1_random.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/connect4/ComputerPlayer_WinTake_Block.java" afterPath="$PROJECT_DIR$/src/connect4/ComputerPlayer_WinTake_Block.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/connect4/Connect4.java" afterPath="$PROJECT_DIR$/src/connect4/Connect4.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Assignment2/src/Point.java" afterPath="$PROJECT_DIR$/../Assignment2/src/Point.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/Connect4TestMine.java" afterPath="$PROJECT_DIR$/src/test/Connect4TestMine.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="connect4.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Point.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385216505845" ignored="false" />
     <file path="/LineDetector.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385548338486" ignored="false" />
-    <file path="/Dummy.txt" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386193682593" ignored="false" />
+    <file path="/Dummy.txt" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386208801931" ignored="false" />
     <file path="$PROJECT_DIR$/../Assignment2/src/MakeImage.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1384870998566" ignored="false" />
     <file path="$PROJECT_DIR$/../Assignment2/text_files/inarow.txt" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1384871048772" ignored="false" />
     <file path="/GameRunner.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386000051867" ignored="false" />
@@ -27,7 +24,7 @@
     <file path="$PROJECT_DIR$/../Assignment2/src/LineDetectorTest.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385146886981" ignored="false" />
     <file path="/Connect4Test.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385822942321" ignored="false" />
     <file path="/Board.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386199451002" ignored="false" />
-    <file path="/Connect4.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386199179383" ignored="false" />
+    <file path="/Connect4.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386211147662" ignored="false" />
     <file path="$PROJECT_DIR$/../Assignment2/src/LineDetectorUtils.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385656935142" ignored="false" />
     <file path="/Connect4TestMine.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386149590384" ignored="false" />
     <file path="$PROJECT_DIR$/../Connect4_GUI/src/connect4/Connect4.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1385833170629" ignored="false" />
@@ -47,7 +44,7 @@
     <file path="$PROJECT_DIR$/../temp/connect_4_java_files/Player.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386075984990" ignored="false" />
     <file path="/Player.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386017050638" ignored="false" />
     <file path="/ComputerPlayer_WinTake_Block.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386044724046" ignored="false" />
-    <file path="/ComputerPlayer20057303.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386193845654" ignored="false" />
+    <file path="/ComputerPlayer20057303.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386210497541" ignored="false" />
     <file path="$PROJECT_DIR$/../temp/SmartConnectFour-v1.0/Run.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386077093456" ignored="false" />
     <file path="$PROJECT_DIR$/../temp/Connect4/source/Main.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386077871915" ignored="false" />
     <file path="$PROJECT_DIR$/../temp/Connect4/source/AI/Controller/MiniMax/Tree.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386078176467" ignored="false" />
@@ -64,7 +61,7 @@
     <file path="$PROJECT_DIR$/../temp/Connect4/source/View/GameGui.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386077995042" ignored="false" />
     <file path="$PROJECT_DIR$/../temp/Connect4/source/View/GamePanel.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386078001330" ignored="false" />
     <file path="$PROJECT_DIR$/../temp/Connect4/source/PlayerConverter.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386078022823" ignored="false" />
-    <file path="/BoardChecker.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386208633635" ignored="false" />
+    <file path="/BoardChecker.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386209413395" ignored="false" />
     <file path="/OLD_ComputerPlayer20057303.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386166271887" ignored="false" />
     <file path="$USER_HOME$/Downloads/temp/ian/Connect4/src/connect4/Connect4.java" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386193611316" ignored="false" />
     <file path="$PROJECT_DIR$/../temp/C4/.idea/workspace.xml" changelist="3361a20d-8ea1-49c0-a50a-776590cc1813" time="1386188313594" ignored="false" />
@@ -132,7 +129,37 @@
       </breakpoint>
     </breakpoint_any>
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/src/connect4/ComputerPlayer20057303.java" line="189" class="connect4.ComputerPlayer20057303" package="connect4">
+      <breakpoint url="file://$PROJECT_DIR$/src/connect4/ComputerPlayer20057303.java" line="214" class="connect4.ComputerPlayer20057303" package="connect4">
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="&#13;&#13;JAVA" />
+        <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/connect4/ComputerPlayer20057303.java" line="35" class="connect4.ComputerPlayer20057303" package="connect4">
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="&#13;&#13;JAVA" />
+        <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/connect4/Connect4.java" line="76" class="connect4.Connect4" package="connect4">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -147,36 +174,6 @@
         <option name="CONDITION" value="&#13;&#13;JAVA" />
         <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/connect4/ComputerPlayer20057303.java" line="38" class="connect4.ComputerPlayer20057303" package="connect4">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/connect4/Connect4.java" line="80" class="connect4.Connect4" package="connect4">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
     </line_breakpoints>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
@@ -188,37 +185,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="BoardChecker.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="BoardChecker.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/connect4/BoardChecker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="197" column="5" selection-start="6998" selection-end="6998" vertical-scroll-proportion="4.2657895">
+            <state line="175" column="0" selection-start="6203" selection-end="6203" vertical-scroll-proportion="-4.24">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Board.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/connect4/Board.java">
+      <file leaf-file-name="ComputerPlayer20057303.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/connect4/ComputerPlayer20057303.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="102" column="0" selection-start="2650" selection-end="2650" vertical-scroll-proportion="0.0">
+            <state line="244" column="4" selection-start="9479" selection-end="9479" vertical-scroll-proportion="1.8268734">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Location.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/connect4/Location.java">
+      <file leaf-file-name="IPlayer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/connect4/IPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="0" selection-start="141" selection-end="141" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HumanPlayer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/connect4/HumanPlayer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="0" selection-start="586" selection-end="586" vertical-scroll-proportion="0.0">
+            <state line="39" column="0" selection-start="889" selection-end="889" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -227,16 +215,16 @@
       <file leaf-file-name="Connect4.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/connect4/Connect4.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="0" selection-start="1950" selection-end="1950" vertical-scroll-proportion="0.0">
+            <state line="63" column="19" selection-start="1327" selection-end="1327" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ComputerPlayer20057303.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/connect4/ComputerPlayer20057303.java">
+      <file leaf-file-name="ComputerPlayer20057028.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/connect4/ComputerPlayer20057028.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="20" selection-start="1226" selection-end="1226" vertical-scroll-proportion="0.0">
+            <state line="16" column="26" selection-start="352" selection-end="352" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -271,11 +259,11 @@
         <option value="$PROJECT_DIR$/src/connect4/ComputerPlayer20057028.java" />
         <option value="$PROJECT_DIR$/src/connect4/ComputerPlayer_WinTake_Block.java" />
         <option value="$PROJECT_DIR$/src/connect4/ComputerPlayer_1_random.java" />
-        <option value="$PROJECT_DIR$/src/connect4/ComputerPlayer20057303.java" />
         <option value="$PROJECT_DIR$/src/connect4/HumanPlayer.java" />
         <option value="$PROJECT_DIR$/src/connect4/Board.java" />
-        <option value="$PROJECT_DIR$/src/connect4/Connect4.java" />
         <option value="$PROJECT_DIR$/src/connect4/BoardChecker.java" />
+        <option value="$PROJECT_DIR$/src/connect4/Connect4.java" />
+        <option value="$PROJECT_DIR$/src/connect4/ComputerPlayer20057303.java" />
       </list>
     </option>
   </component>
@@ -347,10 +335,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -873,7 +857,11 @@
       <created>1386186285149</created>
       <updated>1386186285149</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="wat">
+      <created>1386208809479</created>
+      <updated>1386208809479</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -905,7 +893,7 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24318182" sideWeight="0.909396" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.70302016" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="-1579" y="0" width="1579" height="1025" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.70302016" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="-1778" y="0" width="1778" height="1025" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -915,13 +903,13 @@
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41107383" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32885906" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2030303" sideWeight="0.72315437" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2030303" sideWeight="0.692953" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.7080537" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21515152" sideWeight="0.37416106" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27684563" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21515152" sideWeight="0.68456376" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30704698" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.909396" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15075758" sideWeight="0.6610738" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1052,13 +1040,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/connect4/IPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="0" selection-start="889" selection-end="889" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/Connect4TestMine.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="0" selection-start="188" selection-end="410" vertical-scroll-proportion="0.0">
@@ -1080,13 +1061,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/connect4/ComputerPlayer20057028.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="26" selection-start="352" selection-end="352" vertical-scroll-proportion="-16.443373">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/connect4/Location.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="0" selection-start="141" selection-end="141" vertical-scroll-proportion="0.0">
@@ -1101,13 +1075,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/connect4/ComputerPlayer20057303.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="20" selection-start="1226" selection-end="1226" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/connect4/Board.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="102" column="0" selection-start="2650" selection-end="2650" vertical-scroll-proportion="0.0">
@@ -1115,16 +1082,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/connect4/Connect4.java">
+    <entry file="file://$PROJECT_DIR$/src/connect4/ComputerPlayer20057028.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="0" selection-start="1950" selection-end="1950" vertical-scroll-proportion="0.0">
+        <state line="16" column="26" selection-start="352" selection-end="352" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/connect4/IPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="0" selection-start="889" selection-end="889" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/connect4/BoardChecker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="197" column="5" selection-start="6998" selection-end="6998" vertical-scroll-proportion="4.2657895">
+        <state line="175" column="0" selection-start="6203" selection-end="6203" vertical-scroll-proportion="-4.24">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/connect4/Connect4.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="19" selection-start="1327" selection-end="1327" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/connect4/ComputerPlayer20057303.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="244" column="4" selection-start="9479" selection-end="9479" vertical-scroll-proportion="1.8268734">
           <folding />
         </state>
       </provider>

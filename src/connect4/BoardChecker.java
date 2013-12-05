@@ -15,13 +15,17 @@ public class BoardChecker {
     private static int ROWS = 0;
     private static String PATTERN = "";
     private static String PATTERN_REV = "";
-
     private static LocationState STATE = LocationState.EMPTY;
     private static LocationState OTHER_STATE = LocationState.EMPTY;
     private static Board BOARD = new Board(0, 0);
 
 
-    public static boolean matchFor(LocationState state, Board board, String pattern) {
+    public static boolean globalPatterMach(LocationState state, Board board, String pattern) {
+        setup(state, board, pattern);
+        return horizontalMatch() || verticalMatch() || upDown() || downUp();
+    }
+
+    private static void setup(LocationState state, Board board, String pattern) {
         COLS = board.getNoCols();
         ROWS = board.getNoRows();
         PATTERN = pattern;
@@ -29,9 +33,7 @@ public class BoardChecker {
         STATE = state;
         OTHER_STATE = (STATE == LocationState.RED) ? LocationState.YELLOW : LocationState.RED;
         BOARD = board;
-        return horizontalMatch() || verticalMatch() || upDown() || downUp();
     }
-
 
     private static boolean horizontalMatch() {
         for (int i = ROWS - 1; i >= 0; i--) {
@@ -118,16 +120,9 @@ public class BoardChecker {
         return true;
     }
 
-    public static boolean makesPatern(int col, Board board, String pattern) {
+    public static boolean localPatterMatch(LocationState state, Board board, String pattern, int col) {
+        setup(state, board, pattern);
         int row = findLandingRow(col, board);
-        BOARD = board;
-        ROWS = board.getNoRows();
-        COLS = board.getNoCols();
-        STATE = board.getLocationState(new Location(col, row));
-        OTHER_STATE = (STATE == LocationState.RED) ? LocationState.YELLOW : LocationState.RED;
-        PATTERN = pattern;
-        PATTERN_REV = new StringBuffer(pattern).reverse().toString();
-
 
         //horizontally
         str.setLength(0);
@@ -135,8 +130,7 @@ public class BoardChecker {
             int k = Math.abs(col - i);
             if (k < 4) str.append(compareStates(i, row));
         }
-        System.out.println("hor>  " + str);
-//        if(str.indexOf(PATTERN)>-1)return true;
+        if (str.indexOf(PATTERN) > -1) return true;
 
         //verticaly
         str.setLength(0);
@@ -144,8 +138,7 @@ public class BoardChecker {
             int k = Math.abs(row - i);
             if (k < 4) str.append(compareStates(col, i));
         }
-        System.out.println("vert>  " + str);
-//        if(str.indexOf(PATTERN)>-1)return true;
+        if(str.indexOf(PATTERN)>-1)return true;
 
         //diagonal down up /
         str.setLength(0);
@@ -153,16 +146,14 @@ public class BoardChecker {
             int k = Math.abs(col - i);
             if (k < 4) str.append(compareStates(i, j));
         }
-//        System.out.println("diag from: "+str);
         StringBuffer str2 = new StringBuffer("");
         for (int i = col - 1, j = row + 1; i >= 0 && j < ROWS; i--, j++) {
             int k = Math.abs(col - i);
             if (k < 4) str2.append(compareStates(i, j));
         }
-//        System.out.println("diag to: "+str2);
-        StringBuffer s =  new StringBuffer(str2).reverse();
+        StringBuffer s = new StringBuffer(str2).reverse();
         s.append(str);
-        System.out.println("diag up right> " + s);
+        if(s.indexOf(PATTERN)>-1)return true;
 
         //__________________________________________
         //____________________________________
@@ -172,17 +163,14 @@ public class BoardChecker {
             int k = Math.abs(col - i);
             if (k < 4) str.append(compareStates(i, j));
         }
-        System.out.println("diag from: "+str);
         str2.setLength(0);
         for (int i = col - 1, j = row - 1; i >= 0 && j >= 0; i--, j--) {
             int k = Math.abs(col - i);
             if (k < 4) str2.append(compareStates(i, j));
         }
-        System.out.println("diag to: "+str2);
-//        s =  new StringBuffer(str2).reverse();
-        s =  new StringBuffer(str2).reverse();
+        s = new StringBuffer(str2).reverse();
         s.append(str);
-        System.out.println("diag down right> " + s);
+        if(s.indexOf(PATTERN)>-1)return true;
 
 
         return false;

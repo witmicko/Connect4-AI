@@ -1,9 +1,6 @@
 package connect4;
 
-import edu.princeton.cs.introcs.Stopwatch;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -17,7 +14,7 @@ import java.util.Random;
 // */ he was giving 1 for one in a row, 5 for 2 and 10 for 3
 
 public class ComputerPlayer20057303 extends IPlayer {
-    private final int LIMIT = 500;
+    private final int LIMIT = 2000;
     private final boolean debug = true;
     private static int ROWS = 0;
     private static int COLS = 0;
@@ -38,11 +35,12 @@ public class ComputerPlayer20057303 extends IPlayer {
 //        Connect4 c4Copy = new Connect4(p1, p2, boardCopy);
 //        int[] scores = checkForWinner(c4Copy, p1, boardCopy);
 //        int move = getMax(scores, boardCopy);
-        int move = simulateGame(board);
+        int move = simGame(board);
         return move;
     }
 
     private int[] checkForWinner(Connect4 c4, Player me, Board boardCpy) {
+        LocationState state  = me.getPlayerState();
         int[] scores = new int[COLS];
         getScore:
         {
@@ -51,15 +49,42 @@ public class ComputerPlayer20057303 extends IPlayer {
                 if (boardCpy.getLocationState(new Location(i, 0)) == LocationState.EMPTY) {
                     me.moveTo = i;
                     c4.takeTurn();
-                    if (BoardChecker.matchFor(me.getPlayerState(), boardCpy, "++++")) {
+
+                    //PATTERN MATCHING:
+                    // + IS AN OUR STATE (Player me)
+                    // - OPPONENT
+                    // _ EMPTY
+                    // ~ NOT AVAILABLE (Suspended on board / EMPTY field underneath)
+
+                    //win
+                    if (BoardChecker.localPatterMatch(state,boardCpy,"++++",i)) {
                         me.win = true;
                         score += 1000000;
-//                        break getScore;
                     }
-                    if (BoardChecker.matchFor(me.getPlayerState(), boardCpy, "_+++")) score += 500;
-                    if (BoardChecker.matchFor(me.getPlayerState(), boardCpy, "+_++")) score += 500;
-                    if (BoardChecker.matchFor(me.getPlayerState(), boardCpy, "")) score += 300;
-                    //if 3 in a row.
+                    //three in a row
+                    if (BoardChecker.localPatterMatch(state,boardCpy,"_+++",i)) score+=1000;
+                    if (BoardChecker.localPatterMatch(state,boardCpy,"+_++",i)) score+=1000;
+                    if (BoardChecker.localPatterMatch(state,boardCpy,"++-+",i)) score+=1000;
+                    if (BoardChecker.localPatterMatch(state,boardCpy,"+++-",i)) score+=1000;
+
+                    //block win
+                    if (BoardChecker.localPatterMatch(state,boardCpy,"+---",i)) score+=2000;
+                    if (BoardChecker.localPatterMatch(state,boardCpy,"-+--",i)) score+=2000;
+                    if (BoardChecker.localPatterMatch(state,boardCpy,"--+-",i)) score+=2000;
+                    if (BoardChecker.localPatterMatch(state,boardCpy,"---+",i)) score+=2000;
+
+                    //block pre win
+                    if (BoardChecker.localPatterMatch(state,boardCpy,"_-+-_",i)) score+=500;
+//                    if (BoardChecker.localPatterMatch(state,boardCpy,"_-+-_",i)) score+=500;
+//                    if (BoardChecker.localPatterMatch(state,boardCpy,"_-+-_",i)) score+=500;
+//                    if (BoardChecker.localPatterMatch(state,boardCpy,"_-+-_",i)) score+=500;
+
+                    //can we get 2 in a row?
+                    if (BoardChecker.localPatterMatch(state,boardCpy,"++__",i)) score+=250;
+                    if (BoardChecker.localPatterMatch(state,boardCpy,"_++_",i)) score+=250;
+                    if (BoardChecker.localPatterMatch(state,boardCpy,"__++",i)) score+=250;
+
+
                     scores[i] = score;
                     undoMove(boardCpy, i);
                 }
@@ -215,6 +240,8 @@ public class ComputerPlayer20057303 extends IPlayer {
         if (candidateMoves[myBestMove] == 0) myBestMove = findRandomEmpty(board);
         return myBestMove;
     }//end getMax()
+
+
 
     //copy game board
     private Board copyBoard(Board board) {

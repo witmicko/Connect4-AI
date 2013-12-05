@@ -317,7 +317,7 @@ public class Connect4TestMine {
         board.setLocationState(new Location(2,0),RED);
         board.setLocationState(new Location(3,0),RED);
         board.setLocationState(new Location(4,0),RED);
-        boolean check = BoardChecker.matchFor(RED,board,"++++");
+        boolean check = BoardChecker.globalPatterMach(RED, board, "++++");
     }
 
     public void testTakeTurn() throws Exception {

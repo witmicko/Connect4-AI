@@ -40,7 +40,7 @@ public class Connect4 {
      * @return boolean to detect winner
      */
     public boolean isWin(Board board) {
-        boolean win = BoardChecker.matchFor(currentPlayer.getPlayerState(), board, "++++");
+        boolean win = BoardChecker.globalPatterMach(currentPlayer.getPlayerState(), board, "++++");
         return win;
     }
 
@@ -70,10 +70,7 @@ public class Connect4 {
             if (board.getLocationState(new Location(col, i)) == LocationState.EMPTY) {
                 board.setLocationState(new Location(col, i), currentPlayer.getPlayerState());
                 numTurns++;
-                if (currentPlayer instanceof HumanPlayer) {
-                    System.out.println("-------------------------------------->" + BoardChecker.findLandingRow(col, board));
-                    System.out.println(BoardChecker.makesPatern(col, board, "++++"));
-                }
+
                 return true;
             }
         }
@@ -95,8 +92,8 @@ public class Connect4 {
         Stopwatch s = new Stopwatch();
         for (int i = 0; i < 100; i++) {
 //            IPlayer player1 = new HumanPlayer(LocationState.YELLOW);
-            IPlayer player1 = new HumanPlayer(LocationState.RED);
-            IPlayer player2 = new ComputerPlayer_1_random(LocationState.YELLOW);
+            IPlayer player1 = new ComputerPlayer20057303(LocationState.RED);
+            IPlayer player2 = new HumanPlayer(LocationState.YELLOW);
             Board board = new Board(7, 6);
             Connect4 connect4 = new Connect4(player1, player2, board);
             int turn = 0;
@@ -110,16 +107,14 @@ public class Connect4 {
                         connect4.currentPlayer instanceof HumanPlayer) {
                     System.out.println(connect4.getBoard().toString());          //////DRAW BOARD
                 }
-//                if (connect4.isWin(board) || connect4.isDraw()) break;
-//                connect4.nextPlayer();
+                if (connect4.isWin(board) || connect4.isDraw()) break;
+                connect4.nextPlayer();
             }
-//            System.out.print("." + ((i % 100 == 0) ? "\n" : ""));
-//            System.out.print("." + i);
-//            System.out.println(connect4.currentPlayer.getPlayerState());
+            System.out.print("." + ((i % 100 == 0) ? "\n" : ""));
+            System.out.println(connect4.currentPlayer.getPlayerState());
 //            System.out.println(connect4.currentPlayer.getPlayerState()+"\nred " + newAiWins + " yell " + oldWins);
-//            if (connect4.currentPlayer.getPlayerState() == LocationState.RED) newAiWins++;
-//            if (connect4.currentPlayer.getPlayerState() == LocationState.YELLOW) oldWins++;
-//            System.out.println(connect4.getBoard().toString());
+            if (connect4.currentPlayer.getPlayerState() == LocationState.RED) newAiWins++;
+            if (connect4.currentPlayer.getPlayerState() == LocationState.YELLOW) oldWins++;
         }
         System.out.println("\nnew " + newAiWins + "\nold " + oldWins);
         System.out.println("time: " + s.elapsedTime());
