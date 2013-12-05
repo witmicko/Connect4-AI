@@ -17,7 +17,7 @@ import java.util.Random;
 // */ he was giving 1 for one in a row, 5 for 2 and 10 for 3
 
 public class ComputerPlayer20057303 extends IPlayer {
-    private final int LIMIT = 1000;
+    private final int LIMIT = 500;
     private final boolean debug = true;
     private static int ROWS = 0;
     private static int COLS = 0;
@@ -38,7 +38,7 @@ public class ComputerPlayer20057303 extends IPlayer {
 //        Connect4 c4Copy = new Connect4(p1, p2, boardCopy);
 //        int[] scores = checkForWinner(c4Copy, p1, boardCopy);
 //        int move = getMax(scores, boardCopy);
-        int move = simGame(board);
+        int move = simulateGame(board);
         return move;
     }
 
@@ -56,10 +56,9 @@ public class ComputerPlayer20057303 extends IPlayer {
                         score += 1000000;
 //                        break getScore;
                     }
-//                    if (BoardChecker.matchFor(me.getPlayerState(), boardCpy, "_+++")) score += 300;
-//                    if (BoardChecker.matchFor(me.getPlayerState(), boardCpy, "")) score += 300;
-
-
+                    if (BoardChecker.matchFor(me.getPlayerState(), boardCpy, "_+++")) score += 500;
+                    if (BoardChecker.matchFor(me.getPlayerState(), boardCpy, "+_++")) score += 500;
+                    if (BoardChecker.matchFor(me.getPlayerState(), boardCpy, "")) score += 300;
                     //if 3 in a row.
                     scores[i] = score;
                     undoMove(boardCpy, i);
@@ -151,10 +150,7 @@ public class ComputerPlayer20057303 extends IPlayer {
     private int simGame(Board board) {
         int[] myCols = new int[COLS];
 //        boolean firstMove = true;
-        for (int i = 0; i < 100; i++) {
-            if(i==80){
-                System.out.println();
-            }
+        for (int i = 0; i < 500; i++) {
             Board boardCopy = copyBoard(board);
             Player p1 = new Player(me.getPlayerState());
             Player p2 = new Player(other.getPlayerState());
@@ -168,9 +164,9 @@ public class ComputerPlayer20057303 extends IPlayer {
             while (true) {
                 int[] scores = checkForWinner(c4Copy, p1, boardCopy);
                 p1.moveTo = getMax(scores, boardCopy);
-                if(first){
-                    firstMove=p1.moveTo;
-                    first=false;
+                if (first) {
+                    firstMove = p1.moveTo;
+                    first = false;
                 }
                 if (p1.moveTo == -1) break;
                 if (p1.win) {
@@ -191,7 +187,7 @@ public class ComputerPlayer20057303 extends IPlayer {
                 c4Copy.nextPlayer();
             }
         }
-        System.out.println();
+//        System.out.println();
         int best = getMax(myCols, board);
         return best;
     }
@@ -216,7 +212,7 @@ public class ComputerPlayer20057303 extends IPlayer {
             int rand = r.nextInt(maxes.size());
             myBestMove = maxes.get(rand);
         }
-        if(candidateMoves[myBestMove]==0)myBestMove = findRandomEmpty(board);
+        if (candidateMoves[myBestMove] == 0) myBestMove = findRandomEmpty(board);
         return myBestMove;
     }//end getMax()
 

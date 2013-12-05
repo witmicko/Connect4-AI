@@ -17,10 +17,9 @@ public class ComputerPlayer_1_random extends IPlayer {
         super(playerState);
 
     }
-
     @Override
     public int getMove(Board board) {
-        int x = StdRandom.uniform(0,7);
-        return x;
+        return (int) (Math.random() * 7);
     }
+
 }

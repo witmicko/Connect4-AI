@@ -59,11 +59,6 @@ public class BoardChecker {
     }//end verticalMatch()
 
     private static boolean upDown() {
-//      *
-//      **
-//      ***
-//      ****
-//      *****
         for (int i = 0; i < ROWS - 3; i++) {
             str.setLength(0);
             for (int j = 0; j < (ROWS - i); j++) {
@@ -73,11 +68,7 @@ public class BoardChecker {
             }
             if (str.indexOf(PATTERN) > -1 || str.indexOf(PATTERN_REV) > -1) return true;
         }
-//      *****
-//       ****
-//        ***
-//         **
-//          *
+
         for (int i = 1; i < COLS - 3; i++) {
             str.setLength(0);
             for (int j = 0; j < ROWS - i + 1; j++) {
@@ -91,11 +82,6 @@ public class BoardChecker {
     }// end upDown()
 
     private static boolean downUp() {
-//      *****
-//      ****
-//      ***
-//      **
-//      *
         for (int i = 0; i < ROWS - 3; i++) {
             str.setLength(0);
             for (int j = 0; j < ROWS - i; j++) {
@@ -105,11 +91,6 @@ public class BoardChecker {
             }
             if (str.indexOf(PATTERN) > -1 || str.indexOf(PATTERN_REV) > -1) return true;
         }
-//          *
-//         **
-//        ***
-//       ****
-//      *****
         for (int i = 1; i < COLS - 3; i++) {
             str.setLength(0);
             for (int j = 0; j < ROWS - i + 1; j++) {
@@ -132,9 +113,87 @@ public class BoardChecker {
     }// end compareStates()
 
     private static boolean isAvailable(int x, int y) {
-//        if (y == ROWS - 1 && BOARD.getLocationState(new Location(x, y)) == LocationState.EMPTY) return true;
-        boolean bol = (y < ROWS-1) && !(BOARD.getLocationState(new Location(x, y + 1)) == LocationState.EMPTY);
-        if (bol) return true;
+        boolean bol = (y < ROWS - 1) && (BOARD.getLocationState(new Location(x, y + 1)) == LocationState.EMPTY);
+        if (bol) return false;
+        return true;
+    }
+
+    public static boolean makesPatern(int col, Board board, String pattern) {
+        int row = findLandingRow(col, board);
+        BOARD = board;
+        ROWS = board.getNoRows();
+        COLS = board.getNoCols();
+        STATE = board.getLocationState(new Location(col, row));
+        OTHER_STATE = (STATE == LocationState.RED) ? LocationState.YELLOW : LocationState.RED;
+        PATTERN = pattern;
+        PATTERN_REV = new StringBuffer(pattern).reverse().toString();
+
+
+        //horizontally
+        str.setLength(0);
+        for (int i = 0; i < board.getNoCols(); i++) {
+            int k = Math.abs(col - i);
+            if (k < 4) str.append(compareStates(i, row));
+        }
+        System.out.println("hor>  " + str);
+//        if(str.indexOf(PATTERN)>-1)return true;
+
+        //verticaly
+        str.setLength(0);
+        for (int i = 0; i < board.getNoRows(); i++) {
+            int k = Math.abs(row - i);
+            if (k < 4) str.append(compareStates(col, i));
+        }
+        System.out.println("vert>  " + str);
+//        if(str.indexOf(PATTERN)>-1)return true;
+
+        //diagonal down up /
+        str.setLength(0);
+        for (int i = col, j = row; i < COLS && j >= 0; i++, j--) {
+            int k = Math.abs(col - i);
+            if (k < 4) str.append(compareStates(i, j));
+        }
+//        System.out.println("diag from: "+str);
+        StringBuffer str2 = new StringBuffer("");
+        for (int i = col - 1, j = row + 1; i >= 0 && j < ROWS; i--, j++) {
+            int k = Math.abs(col - i);
+            if (k < 4) str2.append(compareStates(i, j));
+        }
+//        System.out.println("diag to: "+str2);
+        StringBuffer s =  new StringBuffer(str2).reverse();
+        s.append(str);
+        System.out.println("diag up right> " + s);
+
+        //__________________________________________
+        //____________________________________
+        //diagonal up down
+        str.setLength(0);
+        for (int i = col, j = row; i < COLS && j < ROWS; i++, j++) {
+            int k = Math.abs(col - i);
+            if (k < 4) str.append(compareStates(i, j));
+        }
+        System.out.println("diag from: "+str);
+        str2.setLength(0);
+        for (int i = col - 1, j = row - 1; i >= 0 && j >= 0; i--, j--) {
+            int k = Math.abs(col - i);
+            if (k < 4) str2.append(compareStates(i, j));
+        }
+        System.out.println("diag to: "+str2);
+//        s =  new StringBuffer(str2).reverse();
+        s =  new StringBuffer(str2).reverse();
+        s.append(str);
+        System.out.println("diag down right> " + s);
+
+
         return false;
+    }
+
+    public static int findLandingRow(int col, Board board) {
+        int row = 0;
+        while (board.getLocationState(new Location(col, row)) == LocationState.EMPTY) {
+            row++;
+            if (row == board.getNoRows()) break;
+        }
+        return row;
     }
 }

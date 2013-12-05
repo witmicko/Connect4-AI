@@ -28,9 +28,10 @@ public class ComputerPlayer_WinTake_Block extends IPlayer {
 
         int moveTo = checkForWinner(this.board);
 
-        if(moveTo<0)moveTo = findRandomEmpty(this.board);
+        if (moveTo < 0) moveTo = findRandomEmpty(this.board);
         return moveTo;
     }
+
     private int findRandomEmpty(Board boardCpy) {
         ArrayList<Integer> cols = new ArrayList<>();
         for (int i = 0; i < boardCpy.getNoCols(); i++) {
@@ -38,18 +39,17 @@ public class ComputerPlayer_WinTake_Block extends IPlayer {
                 cols.add(i);
             }
         }
-        if (cols.size() > 0){
+        if (cols.size() > 0) {
             int rand = StdRandom.uniform(0, cols.size());
             int mo = cols.get(rand);
             return mo;
-        }
-        else return 0;
+        } else return 0;
     }
 
 
     private int checkForWinner(Board board) {
         for (int i = 0; i < board.getNoCols(); i++) {
-            if (board.getLocationState(new Location(i, 0)) == LocationState.EMPTY)this.me.moveTo = i;
+            if (board.getLocationState(new Location(i, 0)) == LocationState.EMPTY) this.me.moveTo = i;
             else break;
             c4.takeTurn();
             if (c4.isWin(board)) {
@@ -59,7 +59,7 @@ public class ComputerPlayer_WinTake_Block extends IPlayer {
         }
         c4.nextPlayer();
         for (int i = 0; i < board.getNoCols(); i++) {
-            if (board.getLocationState(new Location(i, 0)) == LocationState.EMPTY)this.other.moveTo = i;
+            if (board.getLocationState(new Location(i, 0)) == LocationState.EMPTY) this.other.moveTo = i;
             else break;
             c4.takeTurn();
             boolean isWin = c4.isWin(board);
